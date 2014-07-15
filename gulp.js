@@ -104,6 +104,7 @@ module.exports = function(gulp,conf) {
     gulp.task('server',function() {
         $.nodemon({
             script: 'app.js',
+            ext: 'json',
             ignore: ['**/view.js','public/**'], 
             env: {
                 'NODE_ENV': 'development',

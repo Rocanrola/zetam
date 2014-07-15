@@ -2,7 +2,7 @@ var path = require('path');
 var fs = require('fs');
 var utils = require('./utils');
 var pages = require('./pages');
-
+var components = require('./components');
 
 module.exports = function (req,res,next) {
 	req.resource = utils.pathNameToresource(req._parsedUrl.pathname);
@@ -14,7 +14,9 @@ var router = function(req,res,next){
 	
 	pages.load(pageName,req,function(err,page){
 		if(!err){
-			res.send(page);
+			components.renderComponentTags(page.html, page.data.model, function(err,page){
+				res.send(page)
+			})
 		}else{
 			next();
 		}

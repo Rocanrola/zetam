@@ -35,12 +35,10 @@ exports.load = function(componentName,config,cb){
 }
 
 
-exports.renderComponentTags = function(html,globals,cb){
+exports.renderComponentTags = function(html,parentData,cb){
 	var that = this;
 	var pageDom = $.load(html);
     var componentTags = pageDom("[data-component]");
-
-    globals = globals || {};
 
     async.forEach(componentTags, function(elem, callback) {
         var componentElement = $(elem);
@@ -48,7 +46,7 @@ exports.renderComponentTags = function(html,globals,cb){
 	    
 	    // We need duplicate attrs in another object because if we add globals to a simple reference it affect to original dom too
 	    var data = utils.cloneObject(componentElement.attr());
-	    	data.globals = globals || {};
+	    	data.parent = parentData || {};
 
     	that.load(componentName, data, function(err,componentHTML){
     		if(!err){

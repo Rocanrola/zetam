@@ -40,15 +40,11 @@ exports.loadZetaModule = function(conf,cb){
 
 		var templateFileName = params['data-template'] || 'template';
 		var templatePath = path.resolve(basePath, templateFileName + '.html');
-		
-		if(!fs.existsSync(templatePath)){
-			cb({error:templatePath + ' template not found'})
-			return false;
-		}
-
 		var template = fs.readFileSync(templatePath).toString();
+
 		var modulei18n = require(i18nPath);
 		var data = { model: moduleModel, i18n:modulei18n }
+
 		var html = mustache.render(template, data)
 
 		cb(null,{
