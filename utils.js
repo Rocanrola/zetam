@@ -25,7 +25,6 @@ exports.loadZetaModule = function(conf,cb){
 	var basePath = conf.basePath;
 	var methodName = conf.methodName;
 	var params = conf.data || {};
-
 	var controllerPath = path.resolve(basePath,'controller');
 	var i18nPath = path.resolve(basePath,'i18n.json');
 	

@@ -21,14 +21,17 @@ exports.resolve = function(componentName){
 
 exports.load = function(componentName,config,cb){
 	var componentDir = this.resolve(componentName);
-
-	utils.loadZetaModule({
-		basePath:componentDir,
-		methodName:'init',
-		data:config
-	},function(err,component){
-		cb(null,component.html);
-	})
+	if(componentDir){
+		utils.loadZetaModule({
+			basePath:componentDir,
+			methodName:'init',
+			data:config
+		},function(err,component){
+			cb(null,component.html);
+		})
+	}else{
+		cb({error:'COMPONENT_DIR_NOT_FOUND'})
+	}
 }
 
 
