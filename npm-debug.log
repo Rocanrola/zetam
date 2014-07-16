@@ -1,0 +1,129 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@1.4.9
+3 info using node@v0.10.28
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /Users/marcelozapaia/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/var/folders/r6/cf27pw7x1xx133f_wrkqg5440000gn/T/npm-64046-0wee0cXm/1405478048454-0.9589439311530441/tmp.tgz',
+10 verbose tar pack   '.' ]
+11 verbose tarball /var/folders/r6/cf27pw7x1xx133f_wrkqg5440000gn/T/npm-64046-0wee0cXm/1405478048454-0.9589439311530441/tmp.tgz
+12 verbose folder .
+13 info prepublish zetam@0.2.4
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /Users/marcelozapaia/.npm/1f1177db-tar.lock
+16 silly lockFile 1ede2786-48454-0-9589439311530441-tmp-tgz tar:///var/folders/r6/cf27pw7x1xx133f_wrkqg5440000gn/T/npm-64046-0wee0cXm/1405478048454-0.9589439311530441/tmp.tgz
+17 verbose lock tar:///var/folders/r6/cf27pw7x1xx133f_wrkqg5440000gn/T/npm-64046-0wee0cXm/1405478048454-0.9589439311530441/tmp.tgz /Users/marcelozapaia/.npm/1ede2786-48454-0-9589439311530441-tmp-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile 1ede2786-48454-0-9589439311530441-tmp-tgz tar:///var/folders/r6/cf27pw7x1xx133f_wrkqg5440000gn/T/npm-64046-0wee0cXm/1405478048454-0.9589439311530441/tmp.tgz
+21 silly lockFile 1ede2786-48454-0-9589439311530441-tmp-tgz tar:///var/folders/r6/cf27pw7x1xx133f_wrkqg5440000gn/T/npm-64046-0wee0cXm/1405478048454-0.9589439311530441/tmp.tgz
+22 verbose tar unpack /var/folders/r6/cf27pw7x1xx133f_wrkqg5440000gn/T/npm-64046-0wee0cXm/1405478048454-0.9589439311530441/tmp.tgz
+23 silly lockFile f884ac56-lozapaia-npm-zetam-0-2-4-package tar:///Users/marcelozapaia/.npm/zetam/0.2.4/package
+24 verbose lock tar:///Users/marcelozapaia/.npm/zetam/0.2.4/package /Users/marcelozapaia/.npm/f884ac56-lozapaia-npm-zetam-0-2-4-package.lock
+25 silly lockFile 1ede2786-48454-0-9589439311530441-tmp-tgz tar:///var/folders/r6/cf27pw7x1xx133f_wrkqg5440000gn/T/npm-64046-0wee0cXm/1405478048454-0.9589439311530441/tmp.tgz
+26 verbose lock tar:///var/folders/r6/cf27pw7x1xx133f_wrkqg5440000gn/T/npm-64046-0wee0cXm/1405478048454-0.9589439311530441/tmp.tgz /Users/marcelozapaia/.npm/1ede2786-48454-0-9589439311530441-tmp-tgz.lock
+27 silly gunzTarPerm modes [ '755', '644' ]
+28 silly gunzTarPerm extractEntry package.json
+29 silly gunzTarPerm extractEntry .npmignore
+30 silly gunzTarPerm extractEntry README.md
+31 silly gunzTarPerm extractEntry LICENSE
+32 silly gunzTarPerm extractEntry components.js
+33 silly gunzTarPerm extractEntry config.js
+34 silly gunzTarPerm extractEntry gulp.js
+35 silly gunzTarPerm extractEntry middleware.js
+36 silly gunzTarPerm extractEntry pages.js
+37 silly gunzTarPerm extractEntry utils.js
+38 silly gunzTarPerm extractEntry index.js
+39 silly gunzTarPerm extractEntry push.sh
+40 silly lockFile f884ac56-lozapaia-npm-zetam-0-2-4-package tar:///Users/marcelozapaia/.npm/zetam/0.2.4/package
+41 silly lockFile f884ac56-lozapaia-npm-zetam-0-2-4-package tar:///Users/marcelozapaia/.npm/zetam/0.2.4/package
+42 silly lockFile 1ede2786-48454-0-9589439311530441-tmp-tgz tar:///var/folders/r6/cf27pw7x1xx133f_wrkqg5440000gn/T/npm-64046-0wee0cXm/1405478048454-0.9589439311530441/tmp.tgz
+43 silly lockFile 1ede2786-48454-0-9589439311530441-tmp-tgz tar:///var/folders/r6/cf27pw7x1xx133f_wrkqg5440000gn/T/npm-64046-0wee0cXm/1405478048454-0.9589439311530441/tmp.tgz
+44 silly lockFile 3a52ce78- .
+45 silly lockFile 3a52ce78- .
+46 silly publish { name: 'zetam',
+46 silly publish   description: '(In progress)',
+46 silly publish   version: '0.2.4',
+46 silly publish   engines: { node: '>0.10.1' },
+46 silly publish   author: { name: 'Marcelo Zapaia' },
+46 silly publish   repository: { type: 'git', url: 'https://github.com/qzapaia/zetam.git' },
+46 silly publish   keywords: [ 'express', 'web', 'framework', 'zeta' ],
+46 silly publish   main: 'index.js',
+46 silly publish   license: 'ISC',
+46 silly publish   dependencies:
+46 silly publish    { async: '^0.9.0',
+46 silly publish      cheerio: '^0.17.0',
+46 silly publish      mustache: '^0.8.2',
+46 silly publish      gulp: '^3.8.5',
+46 silly publish      'gulp-browserify': '^0.5.0',
+46 silly publish      'gulp-less': '^1.2.4',
+46 silly publish      'gulp-livereload': '^2.1.0',
+46 silly publish      'gulp-load-plugins': '^0.5.3',
+46 silly publish      'gulp-nodemon': '^1.0.4',
+46 silly publish      'gulp-plumber': '^0.6.3',
+46 silly publish      'gulp-rename': '^1.2.0',
+46 silly publish      'gulp-watch': '^0.6.8' },
+46 silly publish   readmeFilename: 'README.md',
+46 silly publish   readme: 'zetam\n=====\n\nZetam - Express middleware\n',
+46 silly publish   bugs: { url: 'https://github.com/qzapaia/zetam/issues' },
+46 silly publish   homepage: 'https://github.com/qzapaia/zetam',
+46 silly publish   _id: 'zetam@0.2.4',
+46 silly publish   _shasum: '43e9857e3fd54809bb5ecc4eac87d2589a661193',
+46 silly publish   _from: '.' }
+47 verbose url raw zetam
+48 verbose url resolving [ 'https://registry.npmjs.org/', './zetam' ]
+49 verbose url resolved https://registry.npmjs.org/zetam
+50 info trying registry request attempt 1 at 23:34:08
+51 http PUT https://registry.npmjs.org/zetam
+52 http 403 https://registry.npmjs.org/zetam
+53 verbose headers { date: 'Wed, 16 Jul 2014 02:34:09 GMT',
+53 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+53 verbose headers   'content-type': 'application/json',
+53 verbose headers   'cache-control': 'max-age=30',
+53 verbose headers   'content-length': '2564',
+53 verbose headers   'accept-ranges': 'bytes',
+53 verbose headers   via: '1.1 varnish',
+53 verbose headers   'x-served-by': 'cache-jfk1030-JFK',
+53 verbose headers   'x-cache': 'MISS',
+53 verbose headers   'x-cache-hits': '0',
+53 verbose headers   'x-timer': 'S1405478049.429668,VS0,VE361',
+53 verbose headers   'keep-alive': 'timeout=10, max=50',
+53 verbose headers   connection: 'Keep-Alive' }
+54 error publish Failed PUT 403
+55 error Error: forbidden cannot modify pre-existing version: 0.2.4
+55 error old={"name":"zetam","description":"(In progress)","version":"0.2.4","engines":{"node":">0.10.1"},"author":{"name":"Marcelo Zapaia"},"repository":{"type":"git","url":"https://github.com/qzapaia/zetam.git"},"keywords":["express","web","framework","zeta"],"main":"index.js","license":"ISC","dependencies":{"async":"^0.9.0","cheerio":"^0.17.0","mustache":"^0.8.2","gulp":"^3.8.5","gulp-browserify":"^0.5.0","gulp-less":"^1.2.4","gulp-livereload":"^2.1.0","gulp-load-plugins":"^0.5.3","gulp-nodemon":"^1.0.4","gulp-plumber":"^0.6.3","gulp-rename":"^1.2.0","gulp-watch":"^0.6.8"},"bugs":{"url":"https://github.com/qzapaia/zetam/issues"},"homepage":"https://github.com/qzapaia/zetam","_id":"zetam@0.2.4","_shasum":"deaf4366b7331e1e435c99120a3629559ed8f0f9","_from":".","_npmVersion":"1.4.9","_npmUser":{"name":"qzapaia","email":"qzapaia@gmail.com"},"maintainers":[{"name":"qzapaia","email":"qzapaia@gmail.com"}],"dist":{"shasum":"deaf4366b7331e1e435c99120a3629559ed8f0f9","tarball":"http://registry.npmjs.org/zetam/-/zetam-0.2.4.tgz"}}
+55 error new={"name":"zetam","description":"(In progress)","version":"0.2.4","engines":{"node":">0.10.1"},"author":{"name":"Marcelo Zapaia"},"repository":{"type":"git","url":"https://github.com/qzapaia/zetam.git"},"keywords":["express","web","framework","zeta"],"main":"index.js","license":"ISC","dependencies":{"async":"^0.9.0","cheerio":"^0.17.0","mustache":"^0.8.2","gulp":"^3.8.5","gulp-browserify":"^0.5.0","gulp-less":"^1.2.4","gulp-livereload":"^2.1.0","gulp-load-plugins":"^0.5.3","gulp-nodemon":"^1.0.4","gulp-plumber":"^0.6.3","gulp-rename":"^1.2.0","gulp-watch":"^0.6.8"},"readmeFilename":"README.md","readme":"zetam\u000a=====\u000a\u000aZetam - Express middleware\u000a","bugs":{"url":"https://github.com/qzapaia/zetam/issues"},"homepage":"https://github.com/qzapaia/zetam","_id":"zetam@0.2.4","_shasum":"43e9857e3fd54809bb5ecc4eac87d2589a661193","_from":".","_npmVersion":"1.4.9","_npmUser":{"name":"qzapaia","email":"qzapaia@gmail.com"},"maintainers":[{"name":"qzapaia","email":"qzapaia@gmail.com"}],"dist":{"shasum":"43e9857e3fd54809bb5ecc4eac87d2589a661193","tarball":"http://registry.npmjs.org/zetam/-/zetam-0.2.4.tgz"}}: zetam
+55 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:273:14)
+55 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:211:65)
+55 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:123:22)
+55 error     at Request.EventEmitter.emit (events.js:98:17)
+55 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:893:14)
+55 error     at Request.EventEmitter.emit (events.js:117:20)
+55 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:844:12)
+55 error     at IncomingMessage.EventEmitter.emit (events.js:117:20)
+55 error     at _stream_readable.js:919:16
+55 error     at process._tickCallback (node.js:419:13)
+56 error If you need help, you may report this *entire* log,
+56 error including the npm and node versions, at:
+56 error     <http://github.com/npm/npm/issues>
+57 error System Darwin 13.1.0
+58 error command "node" "/usr/local/bin/npm" "publish"
+59 error cwd /Users/marcelozapaia/src/zetam
+60 error node -v v0.10.28
+61 error npm -v 1.4.9
+62 verbose exit [ 1, true ]
