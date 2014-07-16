@@ -15,14 +15,18 @@ var router = function(req,res,next){
 	var page = new Page(pageName);
 	page.req = req;
 	page.conf = {};
-	page.onLoad = function(err,html){
+
+	page.execute(req.method.toLowerCase() || 'get',function(err,html){
+		var that = this;
 		if(err){
 			next();
 		}else{
-			res.send(html);
+			page.renderComponentTags(function(){
+				res.send(page.html);
+			})
 		}
-	}
-	page.load(req.method.toLowerCase() || 'get');
+		
+	});
 	
 	// pages.load(pageName,req,function(err,page){
 	// 	if(!err){
