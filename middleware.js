@@ -2,7 +2,6 @@ var path = require('path');
 var fs = require('fs');
 var utils = require('./utils');
 var Page = require('./page');
-var components = require('./components');
 
 module.exports = function (req,res,next) {
 	req.resource = utils.pathNameToresource(req._parsedUrl.pathname);
@@ -16,25 +15,16 @@ var router = function(req,res,next){
 	page.req = req;
 	page.conf = {};
 
-	page.execute(req.method.toLowerCase() || 'get',function(err,html){
+	page.render(req.method.toLowerCase() || 'get',function(err){
 		var that = this;
 		if(err){
 			next();
 		}else{
-			page.renderComponentTags(function(){
+			page.renderComponentTags(function(err){
 				res.send(page.html);
 			})
 		}
 		
 	});
-	
-	// pages.load(pageName,req,function(err,page){
-	// 	if(!err){
-	// 		components.renderComponentTags(page.html, page.data.model, function(err,page){
-	// 			res.send(page)
-	// 		})
-	// 	}else{
-	// 		next();
-	// 	}
-	// })
+
 }
