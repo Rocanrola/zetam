@@ -1,8 +1,7 @@
 var path = require('path');
 var fs = require('fs');
 var utils = require('./utils');
-var pages = require('./pages');
-var components = require('./components');
+var Page = require('./page');
 
 module.exports = function (req,res,next) {
 	req.resource = utils.pathNameToresource(req._parsedUrl.pathname);
@@ -11,14 +10,21 @@ module.exports = function (req,res,next) {
 
 var router = function(req,res,next){
 	var pageName = req.resource.name || 'index';
-	
-	pages.load(pageName,req,function(err,page){
-		if(!err){
-			components.renderComponentTags(page.html, page.data.model, function(err,page){
-				res.send(page)
-			})
-		}else{
+
+	var page = new Page(pageName);
+	page.req = req;
+	page.conf = {};
+
+	page.render(req.method.toLowerCase() || 'get',function(err){
+		var that = this;
+		if(err){
 			next();
+		}else{
+			page.renderComponentTags(function(err){
+				res.send(page.html);
+			})
 		}
-	})
+		
+	});
+
 }
