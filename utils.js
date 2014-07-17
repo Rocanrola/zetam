@@ -21,6 +21,22 @@ exports.cloneObject = function(a) {
    return JSON.parse(JSON.stringify(a));
 }
 
+exports.mergei18n = function(source,locale){
+	merged = {}
+    for(var i in source.all){
+        merged[i] = source.all[i];
+    }
+
+    for(var i in source[locale]){
+        merged[i] = source[locale][i];
+    }
+    
+    merged.locale = locale;
+    merged[locale] = true;
+
+    return merged;
+}
+
 exports.loadZetaModule = function(conf,cb){
 	var basePath = conf.basePath;
 	var methodName = conf.methodName;

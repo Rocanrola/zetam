@@ -117,6 +117,6 @@ module.exports = function(gulp,conf) {
         });
     });
 
-    gulp.task('zetam', ['livereload','server','watch']);
+    gulp.task('zetam', ['livereload','browserify','less','server','watch']);
 
 }
