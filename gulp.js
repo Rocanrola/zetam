@@ -35,7 +35,9 @@ module.exports = function(gulp,conf) {
 
         return gulp.src('./pages/**/bundle.less')
             .pipe($.plumber())
-            .pipe($.less())
+            .pipe($.less({
+                    compress: true
+             }))
             .pipe($.rename(function(path) {
                 path.basename = path.dirname;
                 path.dirname = '';

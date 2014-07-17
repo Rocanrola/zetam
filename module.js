@@ -42,9 +42,10 @@ Module.prototype = {
 			if(that.req.config && that.req.config.locale){
 				that.i18n = utils.mergei18n(originali18n,that.req.config.locale);
 			}
-
+			
 			var data = { model: that.model, i18n:that.i18n }
-			that.html = mustache.render(that.template, data)
+			that.html = mustache.render(that.template, data);
+			that.html = utils.minifyHTML(that.html);
 
 			cb(null);
 		});

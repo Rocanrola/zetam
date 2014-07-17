@@ -1,6 +1,7 @@
 var path = require('path');
 var fs = require('fs');
 var mustache = require('mustache');
+var htmlminifier = require('html-minifier');
 
 exports.pathNameToresource = function(pathname){
     var urlPath = pathname.replace('/', '').split('/');
@@ -19,6 +20,17 @@ exports.pathNameToresource = function(pathname){
 
 exports.cloneObject = function(a) {
    return JSON.parse(JSON.stringify(a));
+}
+
+exports.minifyHTML = function(html){
+	return htmlminifier.minify(html, {
+		removeComments:true,
+		collapseWhitespace:true,
+		collapseBooleanAttributes:true,
+		removeAttributeQuotes:true,
+		useShortDoctype:true,
+		removeEmptyAttributes:true
+	});
 }
 
 exports.mergei18n = function(source,locale){
