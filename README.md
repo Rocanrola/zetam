@@ -9,7 +9,7 @@ Install
 npm install zetam
 ```
 
-Quick look (example)
+Quick look (example project)
 --------------------
 
  - **project** (main dir)

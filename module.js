@@ -18,10 +18,17 @@ var Module = function (name) {
 Module.prototype = {
 	onLoad:function(){},
 	resolve:function(item){ return path.resolve(rootPath,this.name,item); },
+	pulli18n:function(locale){
+		var i18nPath = this.resolve('i18n.json');
+		
+		if(fs.existsSync(i18nPath)){
+			var originali18n = require(i18nPath);
+			this.i18n = utils.mergei18n(originali18n,locale);
+		}
+	},
 	render:function(methodName,cb){
 		var that = this;
 		var controllerPath = this.resolve('controller');
-		var i18nPath = this.resolve('i18n.json');
 		
 		if(!fs.existsSync(controllerPath+'.js')){
 			cb({error:'CONTROLLER_NOT_FOUND'});
@@ -31,17 +38,16 @@ Module.prototype = {
 		this.controller = require(controllerPath);
 		this.controller[methodName](this.req,this.conf,function(err,model,newConf){
 			that.conf = newConf || that.conf;
+			
+			if(that.req.config && that.req.config.locale){
+				that.pulli18n(that.req.config.locale);
+			}	
 
 			var templateFileName = that.conf['data-template'] || 'template';
 			var templatePath = that.resolve(templateFileName + '.html');
-			var originali18n = require(i18nPath)
+			that.template = fs.readFileSync(templatePath).toString();
 			
 			that.model = model;
-			that.template = fs.readFileSync(templatePath).toString();
-
-			if(that.req.config && that.req.config.locale){
-				that.i18n = utils.mergei18n(originali18n,that.req.config.locale);
-			}
 			
 			var data = { model: that.model, i18n:that.i18n }
 			that.html = mustache.render(that.template, data);
