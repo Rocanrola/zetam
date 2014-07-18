@@ -18,14 +18,14 @@ Quick look (example)
          - **header**
              - controller.js - (server-side logic, create model for the template)
              - i18n.js - (has i18n texts)
-             - template.html - (default template file, it redener model from the controller and i18n)
+             - template.html - (default template file, it render model that comes from the controller and i18n)
              - styles.less - (has css for the component)
              - view.js - (browserify module, clientside logic)
      - **pages**
          - **index** (home page)
              - controller.js - (server side logic and model setup)
              - i18n.js - (has i18n texts)
-             - template.html - (render model and i18n, call components)
+             - template.html - (default template file, it render model that comes from the controller and i18n)
              - bundle.less - (has css for the page and call all the components less stylesheets)
              - view.js - (has the page client-side logic and call all the view.js files from components an initialize these)
      - **public** (statics folder)
@@ -61,7 +61,7 @@ app.use(function(req,res,next){
 app.use(z.middleware);
 
 app.listen(3000,function () {
-	console.log('running on port ' + port);
+    console.log('running on port ' + port);
 });
 ```
 
@@ -122,7 +122,7 @@ exports.get = function (req,conf,cb) {
     // conf: additional conf 
     // cb: callback function. It receives two parameters: error and model object (plain object to be passed to the template)
     
-	cb(null,{title:'page title'})
+    cb(null,{title:'page title'})
 }
 ```
 
