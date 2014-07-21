@@ -15,6 +15,12 @@ var router = function(req,res,next){
 	page.req = req;
 	page.conf = {};
 
+	if(pageName == 'components'){
+		page.resolve = function(item){
+			return path.resolve(__dirname,'pages',this.name,item);
+		}
+	}
+
 	page.render(req.method.toLowerCase() || 'get',function(err){
 		var that = this;
 		if(err){

@@ -20,11 +20,13 @@ Module.prototype = {
 	resolve:function(item){ return path.resolve(rootPath,this.name,item); },
 	pulli18n:function(locale){
 		var i18nPath = this.resolve('i18n.json');
-		
+		var originali18n = {};
+
 		if(fs.existsSync(i18nPath)){
-			var originali18n = require(i18nPath);
-			this.i18n = utils.mergei18n(originali18n,locale);
+			originali18n = require(i18nPath);
 		}
+		
+		this.i18n = utils.mergei18n(originali18n,locale);
 	},
 	render:function(methodName,cb){
 		var that = this;
