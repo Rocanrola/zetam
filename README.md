@@ -1,6 +1,6 @@
 Zetam
 -----
-Zetam is a middleware for express that made frontend development easy. It is based in two basic concepts: Pages and Components
+Zetam is a middleware for express that makes frontend development easy. It's based on two basic concepts: Pages and Components
 
 Install
 -----------

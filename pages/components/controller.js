@@ -1,31 +1,46 @@
-console.log(require.resolve('component'))
-//var Component = require('../component');
+var Component = require('../../component');
 
 exports.get = function (req,conf,cb) {
-	// var response = {};
-	// 	response.componentName = req.resource.id;
-	// 	response.componentName
+ 	
+  	var componentName = req.resource.id;
+ 	var componentAttrs = queryToAttrs(req.query);
 
-	
-	// if(req.query.preview === "true"){
-	// 	cb(null,response);
- //    }else{
- //    	cb(null,response,{"data-template":"plain"});
- //    }
+ 	if(!componentName){
+ 		cb({error:'NO_COMPONENT_NAME'});
+ 		return false;
+ 	}
 
- 	var componentName = req.resource.id;
-
- 	if(componentName){
+ 	if(req.query.preview === 'true'){
+ 		cb(null,{componentName:componentName,componentAttrs:componentAttrs},{'data-template':'template'});
+ 	}else{
  		var component = new Component(componentName);
 
 		component.req = req;
-	    // We need duplicate attrs in another object because if we add globals to a simple reference it affect to original dom too
 		component.conf = req.query;
 
-		component.render('init',function(err){
-			cb(null,{componentHTML:component.html},{"data-template":"plain"});
-			
-		});
+		if(req.resource.subresource && req.resource.subresource.name){
+			component.pullController();
+			var methodName = req.resource.subresource.name;
+			if(methodName in component.controller){
+				component.controller[methodName].call(component.controller,{},req.query,function(err,response){
+                    req.res.json(response);
+                });
+			}
+		}else{
+			component.render('init',function(err){
+				cb(null,{content:component.html},{'data-template':'plain'});
+			});
+		}
+
  	}
+
 	
+}
+
+var queryToAttrs = function(query){
+	var attrs = ''
+	for(var i in query){
+		attrs += i + '=' + '"' + query[i] + '"';
+	}
+	return attrs;
 }

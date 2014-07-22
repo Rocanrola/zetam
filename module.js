@@ -28,16 +28,22 @@ Module.prototype = {
 		
 		this.i18n = utils.mergei18n(originali18n,locale);
 	},
-	render:function(methodName,cb){
-		var that = this;
+	pullController:function(){
 		var controllerPath = this.resolve('controller');
 		
-		if(!fs.existsSync(controllerPath+'.js')){
+		if(fs.existsSync(controllerPath+'.js')){
+			this.controller = require(controllerPath);
+		}
+	},
+	render:function(methodName,cb){
+		var that = this;
+		this.pullController()
+
+		if(!this.controller){
 			cb({error:'CONTROLLER_NOT_FOUND'});
 			return false;
 		}
 
-		this.controller = require(controllerPath);
 		this.controller[methodName](this.req,this.conf,function(err,model,newConf){
 			that.conf = newConf || that.conf;
 			
