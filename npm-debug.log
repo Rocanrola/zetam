@@ -19,24 +19,24 @@
 7 verbose parsed url   href: '.' }
 8 silly lockFile 3a52ce78- .
 9 verbose lock . /Users/mzapaia/.npm/3a52ce78-.lock
-10 verbose tar pack [ '/var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23587-l274Gv01/1405977818643-0.0822267159819603/tmp.tgz',
+10 verbose tar pack [ '/var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23903-RzwB3Kdc/1406033202561-0.13216159772127867/tmp.tgz',
 10 verbose tar pack   '.' ]
-11 verbose tarball /var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23587-l274Gv01/1405977818643-0.0822267159819603/tmp.tgz
+11 verbose tarball /var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23903-RzwB3Kdc/1406033202561-0.13216159772127867/tmp.tgz
 12 verbose folder .
-13 info prepublish zetam@0.2.12
+13 info prepublish zetam@0.2.14
 14 silly lockFile 1f1177db-tar tar://.
 15 verbose lock tar://. /Users/mzapaia/.npm/1f1177db-tar.lock
-16 silly lockFile cee1d0c1-18643-0-0822267159819603-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23587-l274Gv01/1405977818643-0.0822267159819603/tmp.tgz
-17 verbose lock tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23587-l274Gv01/1405977818643-0.0822267159819603/tmp.tgz /Users/mzapaia/.npm/cee1d0c1-18643-0-0822267159819603-tmp-tgz.lock
+16 silly lockFile f0aa1356-2561-0-13216159772127867-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23903-RzwB3Kdc/1406033202561-0.13216159772127867/tmp.tgz
+17 verbose lock tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23903-RzwB3Kdc/1406033202561-0.13216159772127867/tmp.tgz /Users/mzapaia/.npm/f0aa1356-2561-0-13216159772127867-tmp-tgz.lock
 18 silly lockFile 1f1177db-tar tar://.
 19 silly lockFile 1f1177db-tar tar://.
-20 silly lockFile cee1d0c1-18643-0-0822267159819603-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23587-l274Gv01/1405977818643-0.0822267159819603/tmp.tgz
-21 silly lockFile cee1d0c1-18643-0-0822267159819603-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23587-l274Gv01/1405977818643-0.0822267159819603/tmp.tgz
-22 verbose tar unpack /var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23587-l274Gv01/1405977818643-0.0822267159819603/tmp.tgz
-23 silly lockFile 1200fc26-mzapaia-npm-zetam-0-2-12-package tar:///Users/mzapaia/.npm/zetam/0.2.12/package
-24 verbose lock tar:///Users/mzapaia/.npm/zetam/0.2.12/package /Users/mzapaia/.npm/1200fc26-mzapaia-npm-zetam-0-2-12-package.lock
-25 silly lockFile cee1d0c1-18643-0-0822267159819603-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23587-l274Gv01/1405977818643-0.0822267159819603/tmp.tgz
-26 verbose lock tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23587-l274Gv01/1405977818643-0.0822267159819603/tmp.tgz /Users/mzapaia/.npm/cee1d0c1-18643-0-0822267159819603-tmp-tgz.lock
+20 silly lockFile f0aa1356-2561-0-13216159772127867-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23903-RzwB3Kdc/1406033202561-0.13216159772127867/tmp.tgz
+21 silly lockFile f0aa1356-2561-0-13216159772127867-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23903-RzwB3Kdc/1406033202561-0.13216159772127867/tmp.tgz
+22 verbose tar unpack /var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23903-RzwB3Kdc/1406033202561-0.13216159772127867/tmp.tgz
+23 silly lockFile 1efb6e64-mzapaia-npm-zetam-0-2-14-package tar:///Users/mzapaia/.npm/zetam/0.2.14/package
+24 verbose lock tar:///Users/mzapaia/.npm/zetam/0.2.14/package /Users/mzapaia/.npm/1efb6e64-mzapaia-npm-zetam-0-2-14-package.lock
+25 silly lockFile f0aa1356-2561-0-13216159772127867-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23903-RzwB3Kdc/1406033202561-0.13216159772127867/tmp.tgz
+26 verbose lock tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23903-RzwB3Kdc/1406033202561-0.13216159772127867/tmp.tgz /Users/mzapaia/.npm/f0aa1356-2561-0-13216159772127867-tmp-tgz.lock
 27 silly gunzTarPerm modes [ '755', '644' ]
 28 silly gunzTarPerm extractEntry package.json
 29 silly gunzTarPerm extractEntry .npmignore
@@ -46,89 +46,90 @@
 33 silly gunzTarPerm extractEntry config.js
 34 silly gunzTarPerm extractEntry gulp.js
 35 silly gunzTarPerm extractEntry index.js
-36 silly gunzTarPerm extractEntry module.js
+36 silly gunzTarPerm extractEntry middleware.js
 37 silly gunzTarPerm extractEntry page.js
 38 silly gunzTarPerm extractEntry utils.js
-39 silly gunzTarPerm extractEntry middleware.js
+39 silly gunzTarPerm extractEntry module.js
 40 silly gunzTarPerm extractEntry pages/components/controller.js
 41 silly gunzTarPerm extractEntry pages/components/plain.html
 42 silly gunzTarPerm extractEntry pages/components/template.html
-43 silly gunzTarPerm extractEntry push.sh
-44 silly lockFile 1200fc26-mzapaia-npm-zetam-0-2-12-package tar:///Users/mzapaia/.npm/zetam/0.2.12/package
-45 silly lockFile 1200fc26-mzapaia-npm-zetam-0-2-12-package tar:///Users/mzapaia/.npm/zetam/0.2.12/package
-46 silly lockFile cee1d0c1-18643-0-0822267159819603-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23587-l274Gv01/1405977818643-0.0822267159819603/tmp.tgz
-47 silly lockFile cee1d0c1-18643-0-0822267159819603-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23587-l274Gv01/1405977818643-0.0822267159819603/tmp.tgz
-48 silly lockFile 3a52ce78- .
+43 silly gunzTarPerm extractEntry pull.sh
+44 silly gunzTarPerm extractEntry push.sh
+45 silly lockFile 1efb6e64-mzapaia-npm-zetam-0-2-14-package tar:///Users/mzapaia/.npm/zetam/0.2.14/package
+46 silly lockFile 1efb6e64-mzapaia-npm-zetam-0-2-14-package tar:///Users/mzapaia/.npm/zetam/0.2.14/package
+47 silly lockFile f0aa1356-2561-0-13216159772127867-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23903-RzwB3Kdc/1406033202561-0.13216159772127867/tmp.tgz
+48 silly lockFile f0aa1356-2561-0-13216159772127867-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-23903-RzwB3Kdc/1406033202561-0.13216159772127867/tmp.tgz
 49 silly lockFile 3a52ce78- .
-50 silly publish { name: 'zetam',
-50 silly publish   description: '(In progress)',
-50 silly publish   version: '0.2.12',
-50 silly publish   engines: { node: '>0.10.1' },
-50 silly publish   author: { name: 'Marcelo Zapaia' },
-50 silly publish   repository: { type: 'git', url: 'https://github.com/qzapaia/zetam.git' },
-50 silly publish   keywords: [ 'express', 'web', 'framework', 'zeta' ],
-50 silly publish   main: 'index.js',
-50 silly publish   license: 'ISC',
-50 silly publish   dependencies:
-50 silly publish    { async: '^0.9.0',
-50 silly publish      cheerio: '^0.17.0',
-50 silly publish      gulp: '^3.8.5',
-50 silly publish      'gulp-browserify': '^0.5.0',
-50 silly publish      'gulp-less': '^1.2.4',
-50 silly publish      'gulp-livereload': '^2.1.0',
-50 silly publish      'gulp-load-plugins': '^0.5.3',
-50 silly publish      'gulp-nodemon': '^1.0.4',
-50 silly publish      'gulp-plumber': '^0.6.3',
-50 silly publish      'gulp-rename': '^1.2.0',
-50 silly publish      'gulp-watch': '^0.6.8',
-50 silly publish      'html-minifier': '^0.6.5',
-50 silly publish      mustache: '^0.8.2' },
-50 silly publish   readmeFilename: 'README.md',
-50 silly publish   readme: 'Zetam\n-----\nZetam is a middleware for express that made frontend development easy. It is based in two basic concepts: Pages and Components\n\nInstall\n-----------\n\n```sh\nnpm install zetam\n```\n\nQuick look (example project)\n--------------------\n\n - **project** (main dir)\n     - app.js (has Express app and setup zetam middleware)\n     - **components**\n         - **header**\n             - controller.js - (server-side logic, create model for the template)\n             - i18n.js - (has i18n texts)\n             - template.html - (default template file, it render model that comes from the controller and i18n)\n             - styles.less - (has css for the component)\n             - view.js - (browserify module, clientside logic)\n     - **pages**\n         - **index** (home page)\n             - controller.js - (server side logic and model setup)\n             - i18n.js - (has i18n texts)\n             - template.html - (default template file, it render model that comes from the controller and i18n)\n             - bundle.less - (has css for the page and call all the components less stylesheets)\n             - view.js - (has the page client-side logic and call all the view.js files from components an initialize these)\n     - **public** (statics folder)\n         - **css**\n             - **components**\n                 - header.css - (compiled css from the component, is used to preview)\n             - **pages**\n                 - index.css - (compiled from bundle.less it\'s used from the index template)\n         - **js**\n             - **components**\n                 - header.js - (compiled js from the component, is used to preview)\n             - **pages**\n                 - index.js - (compiled from view.js it\'s used from the index template it has all the client-side logix for the page. including components initialization)\n         - gulpfile.js - (it use the zetam.gulp process in order to generate static assets (js and css))\n\nMiddleware\n-------------\nExample:\n\n```js\n// app.js\nvar z = require(\'zetam\');\nvar express = require(\'express\');\nvar app = new express();\n\napp.use(function(req,res,next){\n    // this is needed for i18n\n    req.config.locale = \'es\';\n    next();\n});\n\n// the potato\napp.use(z.middleware);\n\napp.listen(3000,function () {\n    console.log(\'running on port \' + port);\n});\n```\n\nMiddlware has several functions. The most important: handle URLs and load pages (AKA router).\n\n```sh\nGET http://localhost:3000/example\n```\nWill load **example** page, and execute **get** method (from the controller).\n\nIf the url has more sections its sections are created inside a **req.resouce** object.\n\n```sh\nPOST http://localhost:3000/user/9876/post/1234\n```\nWill load **user** page, and execute **post** method (from the controller). This is how the **req.resource** would looks like.\n\n```js\n{ \n    name: \'user\',\n    id: \'9876\',\n    subresource: { \n        name: \'post\', \n        id: \'1234\' \n    } \n}\n```\n\nPages\n-------------\nPages are the initial logic piece for every URL. Each one has it own templates, server and client side logic.\n\nExample pages directory structure:\n\n - **project**\n     - app.js\n     - **pages**\n         - **index**\n         - **example**\n         - **products**\n\nInside each page directory, five files are needed.\n\n**project/pages/example**\n\n - controller.js\n - i18n.json (optional)\n - template.html\n - bundle.less\n - view.js\n\n```js\n//project/pages/example/controller.js\n\nexports.get = function (req,conf,cb) {\n\n    // req: express requirement object\n    // conf: additional conf \n    // cb: callback function. It receives two parameters: error and model object (plain object to be passed to the template)\n    \n    cb(null,{title:\'page title\'})\n}\n```\n\n```js\n//project/pages/example/i18n.json\n// This file is optional, it takes the req.config.locale variable to determine language selected. In this example\n```\n \n',
-50 silly publish   bugs: { url: 'https://github.com/qzapaia/zetam/issues' },
-50 silly publish   homepage: 'https://github.com/qzapaia/zetam',
-50 silly publish   _id: 'zetam@0.2.12',
-50 silly publish   _shasum: '38e240020607ab73194b8eae0ba3f0bd6c76586e',
-50 silly publish   _from: '.' }
-51 verbose url raw zetam
-52 verbose url resolving [ 'https://registry.npmjs.org/', './zetam' ]
-53 verbose url resolved https://registry.npmjs.org/zetam
-54 info trying registry request attempt 1 at 18:23:38
-55 http PUT https://registry.npmjs.org/zetam
-56 http 403 https://registry.npmjs.org/zetam
-57 verbose headers { date: 'Mon, 21 Jul 2014 21:23:40 GMT',
-57 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
-57 verbose headers   'content-type': 'application/json',
-57 verbose headers   'cache-control': 'max-age=60',
-57 verbose headers   'content-length': '7214',
-57 verbose headers   'accept-ranges': 'bytes',
-57 verbose headers   via: '1.1 varnish',
-57 verbose headers   'x-served-by': 'cache-iad2129-IAD',
-57 verbose headers   'x-cache': 'MISS',
-57 verbose headers   'x-cache-hits': '0',
-57 verbose headers   'x-timer': 'S1405977820.091824,VS0,VE385',
-57 verbose headers   'keep-alive': 'timeout=10, max=50',
-57 verbose headers   connection: 'Keep-Alive' }
-58 error publish Failed PUT 403
-59 error Error: forbidden cannot modify pre-existing version: 0.2.12
-59 error old={"name":"zetam","description":"(In progress)","version":"0.2.12","engines":{"node":">0.10.1"},"author":{"name":"Marcelo Zapaia"},"repository":{"type":"git","url":"https://github.com/qzapaia/zetam.git"},"keywords":["express","web","framework","zeta"],"main":"index.js","license":"ISC","dependencies":{"async":"^0.9.0","cheerio":"^0.17.0","gulp":"^3.8.5","gulp-browserify":"^0.5.0","gulp-less":"^1.2.4","gulp-livereload":"^2.1.0","gulp-load-plugins":"^0.5.3","gulp-nodemon":"^1.0.4","gulp-plumber":"^0.6.3","gulp-rename":"^1.2.0","gulp-watch":"^0.6.8","html-minifier":"^0.6.5","mustache":"^0.8.2"},"bugs":{"url":"https://github.com/qzapaia/zetam/issues"},"homepage":"https://github.com/qzapaia/zetam","_id":"zetam@0.2.12","_shasum":"cfac711ef9636a06731e6cb0d1429e73bb89a79d","_from":".","_npmVersion":"1.4.9","_npmUser":{"name":"qzapaia","email":"qzapaia@gmail.com"},"maintainers":[{"name":"qzapaia","email":"qzapaia@gmail.com"}],"dist":{"shasum":"cfac711ef9636a06731e6cb0d1429e73bb89a79d","tarball":"http://registry.npmjs.org/zetam/-/zetam-0.2.12.tgz"}}
-59 error new={"name":"zetam","description":"(In progress)","version":"0.2.12","engines":{"node":">0.10.1"},"author":{"name":"Marcelo Zapaia"},"repository":{"type":"git","url":"https://github.com/qzapaia/zetam.git"},"keywords":["express","web","framework","zeta"],"main":"index.js","license":"ISC","dependencies":{"async":"^0.9.0","cheerio":"^0.17.0","gulp":"^3.8.5","gulp-browserify":"^0.5.0","gulp-less":"^1.2.4","gulp-livereload":"^2.1.0","gulp-load-plugins":"^0.5.3","gulp-nodemon":"^1.0.4","gulp-plumber":"^0.6.3","gulp-rename":"^1.2.0","gulp-watch":"^0.6.8","html-minifier":"^0.6.5","mustache":"^0.8.2"},"readmeFilename":"README.md","readme":"Zetam\u000a-----\u000aZetam is a middleware for express that made frontend development easy. It is based in two basic concepts: Pages and Components\u000a\u000aInstall\u000a-----------\u000a\u000a```sh\u000anpm install zetam\u000a```\u000a\u000aQuick look (example project)\u000a--------------------\u000a\u000a - **project** (main dir)\u000a     - app.js (has Express app and setup zetam middleware)\u000a     - **components**\u000a         - **header**\u000a             - controller.js - (server-side logic, create model for the template)\u000a             - i18n.js - (has i18n texts)\u000a             - template.html - (default template file, it render model that comes from the controller and i18n)\u000a             - styles.less - (has css for the component)\u000a             - view.js - (browserify module, clientside logic)\u000a     - **pages**\u000a         - **index** (home page)\u000a             - controller.js - (server side logic and model setup)\u000a             - i18n.js - (has i18n texts)\u000a             - template.html - (default template file, it render model that comes from the controller and i18n)\u000a             - bundle.less - (has css for the page and call all the components less stylesheets)\u000a             - view.js - (has the page client-side logic and call all the view.js files from components an initialize these)\u000a     - **public** (statics folder)\u000a         - **css**\u000a             - **components**\u000a                 - header.css - (compiled css from the component, is used to preview)\u000a             - **pages**\u000a                 - index.css - (compiled from bundle.less it's used from the index template)\u000a         - **js**\u000a             - **components**\u000a                 - header.js - (compiled js from the component, is used to preview)\u000a             - **pages**\u000a                 - index.js - (compiled from view.js it's used from the index template it has all the client-side logix for the page. including components initialization)\u000a         - gulpfile.js - (it use the zetam.gulp process in order to generate static assets (js and css))\u000a\u000aMiddleware\u000a-------------\u000aExample:\u000a\u000a```js\u000a// app.js\u000avar z = require('zetam');\u000avar express = require('express');\u000avar app = new express();\u000a\u000aapp.use(function(req,res,next){\u000a    // this is needed for i18n\u000a    req.config.locale = 'es';\u000a    next();\u000a});\u000a\u000a// the potato\u000aapp.use(z.middleware);\u000a\u000aapp.listen(3000,function () {\u000a    console.log('running on port ' + port);\u000a});\u000a```\u000a\u000aMiddlware has several functions. The most important: handle URLs and load pages (AKA router).\u000a\u000a```sh\u000aGET http://localhost:3000/example\u000a```\u000aWill load **example** page, and execute **get** method (from the controller).\u000a\u000aIf the url has more sections its sections are created inside a **req.resouce** object.\u000a\u000a```sh\u000aPOST http://localhost:3000/user/9876/post/1234\u000a```\u000aWill load **user** page, and execute **post** method (from the controller). This is how the **req.resource** would looks like.\u000a\u000a```js\u000a{ \u000a    name: 'user',\u000a    id: '9876',\u000a    subresource: { \u000a        name: 'post', \u000a        id: '1234' \u000a    } \u000a}\u000a```\u000a\u000aPages\u000a-------------\u000aPages are the initial logic piece for every URL. Each one has it own templates, server and client side logic.\u000a\u000aExample pages directory structure:\u000a\u000a - **project**\u000a     - app.js\u000a     - **pages**\u000a         - **index**\u000a         - **example**\u000a         - **products**\u000a\u000aInside each page directory, five files are needed.\u000a\u000a**project/pages/example**\u000a\u000a - controller.js\u000a - i18n.json (optional)\u000a - template.html\u000a - bundle.less\u000a - view.js\u000a\u000a```js\u000a//project/pages/example/controller.js\u000a\u000aexports.get = function (req,conf,cb) {\u000a\u000a    // req: express requirement object\u000a    // conf: additional conf \u000a    // cb: callback function. It receives two parameters: error and model object (plain object to be passed to the template)\u000a    \u000a    cb(null,{title:'page title'})\u000a}\u000a```\u000a\u000a```js\u000a//project/pages/example/i18n.json\u000a// This file is optional, it takes the req.config.locale variable to determine language selected. In this example\u000a```\u000a \u000a","bugs":{"url":"https://github.com/qzapaia/zetam/issues"},"homepage":"https://github.com/qzapaia/zetam","_id":"zetam@0.2.12","_shasum":"38e240020607ab73194b8eae0ba3f0bd6c76586e","_from":".","_npmVersion":"1.4.9","_npmUser":{"name":"qzapaia","email":"qzapaia@gmail.com"},"maintainers":[{"name":"qzapaia","email":"qzapaia@gmail.com"}],"dist":{"shasum":"38e240020607ab73194b8eae0ba3f0bd6c76586e","tarball":"http://registry.npmjs.org/zetam/-/zetam-0.2.12.tgz"}}: zetam
-59 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:273:14)
-59 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:211:65)
-59 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:123:22)
-59 error     at Request.EventEmitter.emit (events.js:98:17)
-59 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:893:14)
-59 error     at Request.EventEmitter.emit (events.js:117:20)
-59 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:844:12)
-59 error     at IncomingMessage.EventEmitter.emit (events.js:117:20)
-59 error     at _stream_readable.js:919:16
-59 error     at process._tickCallback (node.js:419:13)
-60 error If you need help, you may report this *entire* log,
-60 error including the npm and node versions, at:
-60 error     <http://github.com/npm/npm/issues>
-61 error System Darwin 13.1.0
-62 error command "node" "/usr/local/bin/npm" "publish"
-63 error cwd /Users/mzapaia/src/zetam
-64 error node -v v0.10.28
-65 error npm -v 1.4.9
-66 verbose exit [ 1, true ]
+50 silly lockFile 3a52ce78- .
+51 silly publish { name: 'zetam',
+51 silly publish   description: '(In progress)',
+51 silly publish   version: '0.2.14',
+51 silly publish   engines: { node: '>0.10.1' },
+51 silly publish   author: { name: 'Marcelo Zapaia' },
+51 silly publish   repository: { type: 'git', url: 'https://github.com/qzapaia/zetam.git' },
+51 silly publish   keywords: [ 'express', 'web', 'framework', 'zeta' ],
+51 silly publish   main: 'index.js',
+51 silly publish   license: 'ISC',
+51 silly publish   dependencies:
+51 silly publish    { async: '^0.9.0',
+51 silly publish      cheerio: '^0.17.0',
+51 silly publish      gulp: '^3.8.5',
+51 silly publish      'gulp-browserify': '^0.5.0',
+51 silly publish      'gulp-less': '^1.2.4',
+51 silly publish      'gulp-livereload': '^2.1.0',
+51 silly publish      'gulp-load-plugins': '^0.5.3',
+51 silly publish      'gulp-nodemon': '^1.0.4',
+51 silly publish      'gulp-plumber': '^0.6.3',
+51 silly publish      'gulp-rename': '^1.2.0',
+51 silly publish      'gulp-watch': '^0.6.8',
+51 silly publish      'html-minifier': '^0.6.5',
+51 silly publish      mustache: '^0.8.2' },
+51 silly publish   readmeFilename: 'README.md',
+51 silly publish   readme: 'Zetam\n-----\nZetam is a middleware for express that makes frontend development easy. It\'s based on two basic concepts: Pages and Components\n\nInstall\n-----------\n\n```sh\nnpm install zetam\n```\n\nQuick look (example project)\n--------------------\n\n - **project** (main dir)\n     - app.js (has Express app and setup zetam middleware)\n     - **components**\n         - **header**\n             - controller.js - (server-side logic, create model for the template)\n             - i18n.js - (has i18n texts)\n             - template.html - (default template file, it render model that comes from the controller and i18n)\n             - styles.less - (has css for the component)\n             - view.js - (browserify module, clientside logic)\n     - **pages**\n         - **index** (home page)\n             - controller.js - (server side logic and model setup)\n             - i18n.js - (has i18n texts)\n             - template.html - (default template file, it render model that comes from the controller and i18n)\n             - bundle.less - (has css for the page and call all the components less stylesheets)\n             - view.js - (has the page client-side logic and call all the view.js files from components an initialize these)\n     - **public** (statics folder)\n         - **css**\n             - **components**\n                 - header.css - (compiled css from the component, is used to preview)\n             - **pages**\n                 - index.css - (compiled from bundle.less it\'s used from the index template)\n         - **js**\n             - **components**\n                 - header.js - (compiled js from the component, is used to preview)\n             - **pages**\n                 - index.js - (compiled from view.js it\'s used from the index template it has all the client-side logix for the page. including components initialization)\n         - gulpfile.js - (it use the zetam.gulp process in order to generate static assets (js and css))\n\nMiddleware\n-------------\nExample:\n\n```js\n// app.js\nvar z = require(\'zetam\');\nvar express = require(\'express\');\nvar app = new express();\n\napp.use(function(req,res,next){\n    // this is needed for i18n\n    req.config.locale = \'es\';\n    next();\n});\n\n// the potato\napp.use(z.middleware);\n\napp.listen(3000,function () {\n    console.log(\'running on port \' + port);\n});\n```\n\nMiddlware has several functions. The most important: handle URLs and load pages (AKA router).\n\n```sh\nGET http://localhost:3000/example\n```\nWill load **example** page, and execute **get** method (from the controller).\n\nIf the url has more sections its sections are created inside a **req.resouce** object.\n\n```sh\nPOST http://localhost:3000/user/9876/post/1234\n```\nWill load **user** page, and execute **post** method (from the controller). This is how the **req.resource** would looks like.\n\n```js\n{ \n    name: \'user\',\n    id: \'9876\',\n    subresource: { \n        name: \'post\', \n        id: \'1234\' \n    } \n}\n```\n\nPages\n-------------\nPages are the initial logic piece for every URL. Each one has it own templates, server and client side logic.\n\nExample pages directory structure:\n\n - **project**\n     - app.js\n     - **pages**\n         - **index**\n         - **example**\n         - **products**\n\nInside each page directory, five files are needed.\n\n**project/pages/example**\n\n - controller.js\n - i18n.json (optional)\n - template.html\n - bundle.less\n - view.js\n\n```js\n//project/pages/example/controller.js\n\nexports.get = function (req,conf,cb) {\n\n    // req: express requirement object\n    // conf: additional conf \n    // cb: callback function. It receives two parameters: error and model object (plain object to be passed to the template)\n    \n    cb(null,{title:\'page title\'})\n}\n```\n\n```js\n//project/pages/example/i18n.json\n// This file is optional, it takes the req.config.locale variable to determine language selected. In this example\n```\n \n',
+51 silly publish   bugs: { url: 'https://github.com/qzapaia/zetam/issues' },
+51 silly publish   homepage: 'https://github.com/qzapaia/zetam',
+51 silly publish   _id: 'zetam@0.2.14',
+51 silly publish   _shasum: '94714c1ce1be0831520807c8e3a8dea54fb873c7',
+51 silly publish   _from: '.' }
+52 verbose url raw zetam
+53 verbose url resolving [ 'https://registry.npmjs.org/', './zetam' ]
+54 verbose url resolved https://registry.npmjs.org/zetam
+55 info trying registry request attempt 1 at 09:46:42
+56 http PUT https://registry.npmjs.org/zetam
+57 http 403 https://registry.npmjs.org/zetam
+58 verbose headers { date: 'Tue, 22 Jul 2014 12:46:45 GMT',
+58 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+58 verbose headers   'content-type': 'application/json',
+58 verbose headers   'cache-control': 'max-age=60',
+58 verbose headers   'content-length': '7214',
+58 verbose headers   'accept-ranges': 'bytes',
+58 verbose headers   via: '1.1 varnish',
+58 verbose headers   'x-served-by': 'cache-jfk1032-JFK',
+58 verbose headers   'x-cache': 'MISS',
+58 verbose headers   'x-cache-hits': '0',
+58 verbose headers   'x-timer': 'S1406033204.814439,VS0,VE331',
+58 verbose headers   'keep-alive': 'timeout=10, max=50',
+58 verbose headers   connection: 'Keep-Alive' }
+59 error publish Failed PUT 403
+60 error Error: forbidden cannot modify pre-existing version: 0.2.14
+60 error old={"name":"zetam","description":"(In progress)","version":"0.2.14","engines":{"node":">0.10.1"},"author":{"name":"Marcelo Zapaia"},"repository":{"type":"git","url":"https://github.com/qzapaia/zetam.git"},"keywords":["express","web","framework","zeta"],"main":"index.js","license":"ISC","dependencies":{"async":"^0.9.0","cheerio":"^0.17.0","gulp":"^3.8.5","gulp-browserify":"^0.5.0","gulp-less":"^1.2.4","gulp-livereload":"^2.1.0","gulp-load-plugins":"^0.5.3","gulp-nodemon":"^1.0.4","gulp-plumber":"^0.6.3","gulp-rename":"^1.2.0","gulp-watch":"^0.6.8","html-minifier":"^0.6.5","mustache":"^0.8.2"},"bugs":{"url":"https://github.com/qzapaia/zetam/issues"},"homepage":"https://github.com/qzapaia/zetam","_id":"zetam@0.2.14","_shasum":"9d44d47531ede70ccc4988a768494bb01335af7d","_from":".","_npmVersion":"1.4.9","_npmUser":{"name":"qzapaia","email":"qzapaia@gmail.com"},"maintainers":[{"name":"qzapaia","email":"qzapaia@gmail.com"}],"dist":{"shasum":"9d44d47531ede70ccc4988a768494bb01335af7d","tarball":"http://registry.npmjs.org/zetam/-/zetam-0.2.14.tgz"}}
+60 error new={"name":"zetam","description":"(In progress)","version":"0.2.14","engines":{"node":">0.10.1"},"author":{"name":"Marcelo Zapaia"},"repository":{"type":"git","url":"https://github.com/qzapaia/zetam.git"},"keywords":["express","web","framework","zeta"],"main":"index.js","license":"ISC","dependencies":{"async":"^0.9.0","cheerio":"^0.17.0","gulp":"^3.8.5","gulp-browserify":"^0.5.0","gulp-less":"^1.2.4","gulp-livereload":"^2.1.0","gulp-load-plugins":"^0.5.3","gulp-nodemon":"^1.0.4","gulp-plumber":"^0.6.3","gulp-rename":"^1.2.0","gulp-watch":"^0.6.8","html-minifier":"^0.6.5","mustache":"^0.8.2"},"readmeFilename":"README.md","readme":"Zetam\u000a-----\u000aZetam is a middleware for express that makes frontend development easy. It's based on two basic concepts: Pages and Components\u000a\u000aInstall\u000a-----------\u000a\u000a```sh\u000anpm install zetam\u000a```\u000a\u000aQuick look (example project)\u000a--------------------\u000a\u000a - **project** (main dir)\u000a     - app.js (has Express app and setup zetam middleware)\u000a     - **components**\u000a         - **header**\u000a             - controller.js - (server-side logic, create model for the template)\u000a             - i18n.js - (has i18n texts)\u000a             - template.html - (default template file, it render model that comes from the controller and i18n)\u000a             - styles.less - (has css for the component)\u000a             - view.js - (browserify module, clientside logic)\u000a     - **pages**\u000a         - **index** (home page)\u000a             - controller.js - (server side logic and model setup)\u000a             - i18n.js - (has i18n texts)\u000a             - template.html - (default template file, it render model that comes from the controller and i18n)\u000a             - bundle.less - (has css for the page and call all the components less stylesheets)\u000a             - view.js - (has the page client-side logic and call all the view.js files from components an initialize these)\u000a     - **public** (statics folder)\u000a         - **css**\u000a             - **components**\u000a                 - header.css - (compiled css from the component, is used to preview)\u000a             - **pages**\u000a                 - index.css - (compiled from bundle.less it's used from the index template)\u000a         - **js**\u000a             - **components**\u000a                 - header.js - (compiled js from the component, is used to preview)\u000a             - **pages**\u000a                 - index.js - (compiled from view.js it's used from the index template it has all the client-side logix for the page. including components initialization)\u000a         - gulpfile.js - (it use the zetam.gulp process in order to generate static assets (js and css))\u000a\u000aMiddleware\u000a-------------\u000aExample:\u000a\u000a```js\u000a// app.js\u000avar z = require('zetam');\u000avar express = require('express');\u000avar app = new express();\u000a\u000aapp.use(function(req,res,next){\u000a    // this is needed for i18n\u000a    req.config.locale = 'es';\u000a    next();\u000a});\u000a\u000a// the potato\u000aapp.use(z.middleware);\u000a\u000aapp.listen(3000,function () {\u000a    console.log('running on port ' + port);\u000a});\u000a```\u000a\u000aMiddlware has several functions. The most important: handle URLs and load pages (AKA router).\u000a\u000a```sh\u000aGET http://localhost:3000/example\u000a```\u000aWill load **example** page, and execute **get** method (from the controller).\u000a\u000aIf the url has more sections its sections are created inside a **req.resouce** object.\u000a\u000a```sh\u000aPOST http://localhost:3000/user/9876/post/1234\u000a```\u000aWill load **user** page, and execute **post** method (from the controller). This is how the **req.resource** would looks like.\u000a\u000a```js\u000a{ \u000a    name: 'user',\u000a    id: '9876',\u000a    subresource: { \u000a        name: 'post', \u000a        id: '1234' \u000a    } \u000a}\u000a```\u000a\u000aPages\u000a-------------\u000aPages are the initial logic piece for every URL. Each one has it own templates, server and client side logic.\u000a\u000aExample pages directory structure:\u000a\u000a - **project**\u000a     - app.js\u000a     - **pages**\u000a         - **index**\u000a         - **example**\u000a         - **products**\u000a\u000aInside each page directory, five files are needed.\u000a\u000a**project/pages/example**\u000a\u000a - controller.js\u000a - i18n.json (optional)\u000a - template.html\u000a - bundle.less\u000a - view.js\u000a\u000a```js\u000a//project/pages/example/controller.js\u000a\u000aexports.get = function (req,conf,cb) {\u000a\u000a    // req: express requirement object\u000a    // conf: additional conf \u000a    // cb: callback function. It receives two parameters: error and model object (plain object to be passed to the template)\u000a    \u000a    cb(null,{title:'page title'})\u000a}\u000a```\u000a\u000a```js\u000a//project/pages/example/i18n.json\u000a// This file is optional, it takes the req.config.locale variable to determine language selected. In this example\u000a```\u000a \u000a","bugs":{"url":"https://github.com/qzapaia/zetam/issues"},"homepage":"https://github.com/qzapaia/zetam","_id":"zetam@0.2.14","_shasum":"94714c1ce1be0831520807c8e3a8dea54fb873c7","_from":".","_npmVersion":"1.4.9","_npmUser":{"name":"qzapaia","email":"qzapaia@gmail.com"},"maintainers":[{"name":"qzapaia","email":"qzapaia@gmail.com"}],"dist":{"shasum":"94714c1ce1be0831520807c8e3a8dea54fb873c7","tarball":"http://registry.npmjs.org/zetam/-/zetam-0.2.14.tgz"}}: zetam
+60 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:273:14)
+60 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:211:65)
+60 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:123:22)
+60 error     at Request.EventEmitter.emit (events.js:98:17)
+60 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:893:14)
+60 error     at Request.EventEmitter.emit (events.js:117:20)
+60 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:844:12)
+60 error     at IncomingMessage.EventEmitter.emit (events.js:117:20)
+60 error     at _stream_readable.js:919:16
+60 error     at process._tickCallback (node.js:419:13)
+61 error If you need help, you may report this *entire* log,
+61 error including the npm and node versions, at:
+61 error     <http://github.com/npm/npm/issues>
+62 error System Darwin 13.1.0
+63 error command "node" "/usr/local/bin/npm" "publish"
+64 error cwd /Users/mzapaia/src/zetam
+65 error node -v v0.10.28
+66 error npm -v 1.4.9
+67 verbose exit [ 1, true ]
