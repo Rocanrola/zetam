@@ -1,5 +1,4 @@
 var z = require('./');
-var mainConfig = require('./config');
 var livereload = require('gulp-livereload');
 var componentPaths;
 
@@ -14,10 +13,7 @@ var $ = {
 module.exports = function(gulp,conf) {
     conf = conf || {};
     conf.expressPort = conf.expressPort || 3000; 
-    
-    if(conf.componentPaths){
-        componentPaths = mainConfig.componentPaths(conf.componentPaths)
-    }
+
     
     // LESS
 

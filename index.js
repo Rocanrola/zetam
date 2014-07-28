@@ -1,3 +1,3 @@
 exports.middleware = require('./middleware');
-exports.config = require('./config');
+exports.load = require('./load');
 exports.gulp = require('./gulp');

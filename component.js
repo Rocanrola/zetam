@@ -1,7 +1,6 @@
 var path = require('path');
 var utils = require('./utils');
 var Module = require('./module');
-var config = require('./config');
 var fs = require('fs');
 var rootDir = path.resolve(path.dirname(require.main.filename));
 
