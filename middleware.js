@@ -12,11 +12,21 @@ var router = function(req,res,next){
 	}
 
 	var pageName = req.resource.name || 'index';
-	var methodName = req.method || 'get';
+	var methodName = req.method.toLowerCase() || 'get';
 
-	load.page(pageName, methodName, data, function(err){
-		this.render(function(){
-			res.end(this.html);
-		})
-	});
+	var controller = load.controller(pageName);
+	
+	if(controller){
+		controller[methodName].call(controller,req,res,next);
+	}else{
+		load.page(pageName, methodName, data, function(err,page){
+			if(!err){
+				res.end(this.html);
+			}else{
+				console.error(err);
+				res.send(404);
+			}
+		});
+	}
+
 }
