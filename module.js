@@ -2,67 +2,41 @@ var path = require('path');
 var fs = require('fs');
 var mustache = require('mustache');
 var utils = require('./utils');
-var rootPath = path.resolve(path.dirname(require.main.filename));
 
 var Module = function (name) {
-	this.name = name || '';
-	this.req = {};
-	this.conf = {};
 	this.model = {};
 	this.i18n = {};
-	this.path = '';
 	this.template = '';
+	this.html = '';
 	this.controller = null;
 }
 
 Module.prototype = {
-	onLoad:function(){},
-	resolve:function(item){ return path.resolve(rootPath,this.name,item); },
-	pulli18n:function(locale){
-		var i18nPath = this.resolve('i18n.json');
-		var originali18n = {};
+	render:function(cb){
+		var data = { model: this.model, i18n:this.i18n }
 
-		if(fs.existsSync(i18nPath)){
-			originali18n = require(i18nPath);
-		}
+		this.html = mustache.render(this.template, data);
 		
-		this.i18n = utils.mergei18n(originali18n,locale);
-	},
-	pullController:function(){
-		var controllerPath = this.resolve('controller');
-		
-		if(fs.existsSync(controllerPath+'.js')){
-			this.controller = require(controllerPath);
+		if(cb){
+			cb.call(this,this.html);
 		}
 	},
-	render:function(methodName,cb){
+	loadModelFromMethodAndRender:function(methodName,args,cb){
 		var that = this;
-		this.pullController()
 
-		if(!this.controller){
-			cb({error:'CONTROLLER_NOT_FOUND'});
-			return false;
+		if(this.controller && (methodName in this.controller)){
+			this.controller[methodName](args,function(err,model){
+				if(!err && model){
+					that.model = model;
+					
+					that.render(function(){
+						cb.call(that);
+					});
+				}else{
+					cb({error:'SOMETHING_WRONG_WITH_METHOD'})
+				}
+			})
 		}
-
-		this.controller[methodName](this.req,this.conf,function(err,model,newConf){
-			that.conf = newConf || that.conf;
-			
-			if(that.req.config && that.req.config.locale){
-				that.pulli18n(that.req.config.locale);
-			}	
-
-			var templateFileName = that.conf['data-template'] || 'template';
-			var templatePath = that.resolve(templateFileName + '.html');
-			that.template = fs.readFileSync(templatePath).toString();
-			
-			that.model = model;
-			
-			var data = { model: that.model, i18n:that.i18n }
-			that.html = mustache.render(that.template, data);
-			that.html = utils.minifyHTML(that.html);
-
-			cb(null);
-		});
 	}
 }
 

@@ -1,5 +1,4 @@
 var z = require('./');
-var mainConfig = require('./config');
 var livereload = require('gulp-livereload');
 var componentPaths;
 
@@ -14,16 +13,16 @@ var $ = {
 module.exports = function(gulp,conf) {
     conf = conf || {};
     conf.expressPort = conf.expressPort || 3000; 
-    
-    if(conf.componentPaths){
-        componentPaths = mainConfig.componentPaths(conf.componentPaths)
-    }
+    conf.paths = conf.paths || [];
+    conf.paths = conf.paths.concat('./');
     
     // LESS
 
     gulp.task('less', function() {
-        componentPaths.forEach(function(path){
-            gulp.src('./'+path+'/**/styles.less')
+        conf.paths.forEach(function(path){
+
+            // TODO : Pasar este forEach a dos tasks y usar arrays en en gulp.src([path1,path2])
+            gulp.src(path+'/components/**/styles.less')
                 .pipe($.plumber())
                 .pipe($.less())
                 .pipe($.rename(function(path) {
@@ -31,18 +30,19 @@ module.exports = function(gulp,conf) {
                     path.dirname = '';
                 }))
                 .pipe(gulp.dest('./public/css/components/'));
+
+            gulp.src(path+'/pages/**/bundle.less')
+                .pipe($.plumber())
+                .pipe($.less({
+                        compress: true
+                 }))
+                .pipe($.rename(function(path) {
+                    path.basename = path.dirname;
+                    path.dirname = '';
+                }))
+                .pipe(gulp.dest('./public/css/pages/'));
         })
 
-        return gulp.src('./pages/**/bundle.less')
-            .pipe($.plumber())
-            .pipe($.less({
-                    compress: true
-             }))
-            .pipe($.rename(function(path) {
-                path.basename = path.dirname;
-                path.dirname = '';
-            }))
-            .pipe(gulp.dest('./public/css/pages/'));
     });
 
 
@@ -53,8 +53,9 @@ module.exports = function(gulp,conf) {
     // Browserify
 
     gulp.task('browserify', function() {
-        componentPaths.forEach(function(path){
-            gulp.src('./'+path+'/**/view.js')
+        conf.paths.forEach(function(path){
+
+            gulp.src(path+'/components/**/view.js')
                     .pipe($.plumber())
                     .pipe($.browserify())
                     .pipe($.rename(function(path) {
@@ -62,9 +63,8 @@ module.exports = function(gulp,conf) {
                         path.dirname = '';
                     }))
                     .pipe(gulp.dest('./public/js/components/'));
-        })
 
-        return gulp.src('./pages/**/view.js')
+            gulp.src(path+'/pages/**/view.js')
                     .pipe($.plumber())
                     .pipe($.browserify())
                     .pipe($.rename(function(path) {
@@ -72,6 +72,8 @@ module.exports = function(gulp,conf) {
                         path.dirname = '';
                     }))
                     .pipe(gulp.dest('./public/js/pages/'));
+        })
+
     });
 
     gulp.task('browserify-and-autoreload',['browserify'], function() {

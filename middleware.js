@@ -1,7 +1,5 @@
-var path = require('path');
-var fs = require('fs');
+var load = require('./load');
 var utils = require('./utils');
-var Page = require('./page');
 
 module.exports = function (req,res,next) {
 	req.resource = utils.pathNameToresource(req._parsedUrl.pathname);
@@ -9,28 +7,26 @@ module.exports = function (req,res,next) {
 }
 
 var router = function(req,res,next){
-	var pageName = req.resource.name || 'index';
-
-	var page = new Page(pageName);
-	page.req = req;
-	page.conf = {};
-
-	if(pageName == 'components'){
-		page.resolve = function(item){
-			return path.resolve(__dirname,'pages',this.name,item);
-		}
+	var data = {
+		globals:req.config || config
 	}
 
-	page.render(req.method.toLowerCase() || 'get',function(err){
-		var that = this;
-		if(err){
-			next();
-		}else{
-			page.renderComponentTags(function(err){
-				res.send(page.html);
-			})
-		}
-		
-	});
+	var pageName = req.resource.name || 'index';
+	var methodName = req.method.toLowerCase() || 'get';
+
+	var controller = load.controller(pageName);
+	
+	if(controller){
+		controller[methodName].call(controller,req,res,next);
+	}else{
+		load.page(pageName, methodName, data, function(err,page){
+			if(!err){
+				res.end(this.html);
+			}else{
+				console.error(err);
+				res.send(404);
+			}
+		});
+	}
 
 }

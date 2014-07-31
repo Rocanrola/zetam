@@ -1,46 +1,41 @@
-var path = require('path');
-var utils = require('./utils');
 var Module = require('./module');
-var Component = require('./component');
 var $ = require('cheerio');
 var async = require('async');
+var load = require('./load');
+var utils = require('./utils');
 
 var Page = function(pageName){
+	// super()
 	Module.apply(this,arguments);
-
-	this.name = pageName || '';
 }
 
+// extiende Module
 Page.prototype = Object.create(Module.prototype);
-Page.prototype.resolve = function(item){
-	return path.resolve(path.dirname(require.main.filename),'pages',this.name,item);
-}
 
-Page.prototype.renderComponentTags = function(cb){
+Page.prototype.renderComponentTags = function(args,cb){
 	var that = this;
+
 	var pageDom = $.load(this.html);
     var componentTags = pageDom("[data-component]");
+
+    args = args || {};
 
     async.forEach(componentTags, function(elem, callback) {
         var componentElement = $(elem);
 	    var componentName = componentElement.data('component');
-	    var component = new Component(componentName);
+		
+		var componentArgs = utils.cloneObject(componentElement.attr());
+			componentArgs.parent = args;
+			componentArgs.globals = args.globals;
 
-		component.req = that.req;
-	    // We need duplicate attrs in another object because if we add globals to a simple reference it affect to original dom too
-		component.conf = utils.cloneObject(componentElement.attr());
-		component.conf.parent = that.model;
-
-		component.render('init',function(err){
-			if(!err){
-				componentElement.html(component.html);
-			}
-			callback()
-			
-		});
+	    load.component(componentName,'init',componentArgs,function(err,component){
+	    	componentElement.html(component.html);
+	    	callback();
+	    })
     }, function(err) {
     	that.html = pageDom.html();
         cb(null);
     });
 }
+
 module.exports = Page;
