@@ -16,12 +16,14 @@ var router = function(req,res,next){
 
 	var controller = load.controller(pageName);
 	
-	if(controller){
+	if(pageName === 'components'){
+		require('./controllers/components').call(controller,req,res,next);
+	}else if(controller){
 		controller[methodName].call(controller,req,res,next);
 	}else{
 		load.page(pageName, methodName, data, function(err,page){
 			if(!err){
-				res.end(this.html);
+				res.end(utils.minifyHTML(page.html));
 			}else{
 				console.error(err);
 				res.send(404);
