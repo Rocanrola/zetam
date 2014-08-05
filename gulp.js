@@ -1,4 +1,5 @@
 var z = require('./');
+var path = require('path');
 var livereload = require('gulp-livereload');
 var componentPaths;
 
@@ -10,40 +11,46 @@ var $ = {
     browserify:require('gulp-browserify')
 }
 
+var addEach = function(arr,add){
+    var newArr = arr.slice(0);
+
+    for (var i = 0; i < newArr.length; i++) {
+        newArr[i] += (typeof add == 'string' ? add : add[i]);
+    };
+    return newArr;
+}
+
 module.exports = function(gulp,conf) {
     conf = conf || {};
     conf.expressPort = conf.expressPort || 3000; 
     conf.paths = conf.paths || [];
-    conf.paths = conf.paths.concat('./');
     
-    // LESS
+    var componentPaths = ['./components'].concat(addEach(conf.paths,'/components'));
+    var pagesPaths = ['./pages'].concat(addEach(conf.paths,'/pages'));
 
-    gulp.task('less', function() {
-        conf.paths.forEach(function(path){
+    gulp.task('less-components', function() {
+        return gulp.src(addEach(componentPaths,'/**/styles.less'))
+            .pipe($.plumber())
+            .pipe($.less())
+            .pipe($.rename(function(path) {
+                path.basename = path.dirname;
+                path.dirname = '';
+            }))
+            .pipe(gulp.dest('./public/css/components/'));
+    })
 
-            // TODO : Pasar este forEach a dos tasks y usar arrays en en gulp.src([path1,path2])
-            gulp.src(path+'/components/**/styles.less')
-                .pipe($.plumber())
-                .pipe($.less())
-                .pipe($.rename(function(path) {
-                    path.basename = path.dirname;
-                    path.dirname = '';
-                }))
-                .pipe(gulp.dest('./public/css/components/'));
+    gulp.task('less-pages', function() {
+        return gulp.src(addEach(pagesPaths,'/**/bundle.less'))
+            .pipe($.plumber())
+            .pipe($.less())
+            .pipe($.rename(function(path) {
+                path.basename = path.dirname;
+                path.dirname = '';
+            }))
+            .pipe(gulp.dest('./public/css/pages/'));
+    })
 
-            gulp.src(path+'/pages/**/bundle.less')
-                .pipe($.plumber())
-                .pipe($.less({
-                        compress: true
-                 }))
-                .pipe($.rename(function(path) {
-                    path.basename = path.dirname;
-                    path.dirname = '';
-                }))
-                .pipe(gulp.dest('./public/css/pages/'));
-        })
-
-    });
+    gulp.task('less',['less-components','less-pages']);
 
 
     gulp.task('less-and-autoreload',['less'], function() {
@@ -83,18 +90,21 @@ module.exports = function(gulp,conf) {
     // Watch
 
     gulp.task('watch', function() {
+        var lessPaths = addEach(componentPaths,'/**/*.less')
+                        .concat(addEach(pagesPaths,'/**/*.less'))
+                        .concat(['./less/**/*.less']);
 
-        gulp.watch(['**/*.less',
-                    '!node_modules/**',
-                    '!public/**'], ['less-and-autoreload']);
+        // jsCs == Javascript Clien Side
+        var jsCsPaths = addEach(componentPaths,'/**/*.js')
+                        .concat(addEach(pagesPaths,'/**/*.js'))
+                        .concat(['./scripts/**/*.js']);
 
-        gulp.watch(['**/*.js',
-                    '!node_modules/**',
-                    '!public/**'], ['browserify-and-autoreload']);
+        var templatesPaths = addEach(componentPaths,'/**/*.html')
+                            .concat(addEach(pagesPaths,'/**/*.html'));
 
-        gulp.watch(['**/*.html',
-                    '!node_modules/**',
-                    '!public/**']).on('change', livereload.changed);
+        gulp.watch(lessPaths, ['less-and-autoreload']);
+        gulp.watch(jsCsPaths, ['browserify-and-autoreload']);
+        gulp.watch(templatesPaths).on('change', livereload.changed);
     });
 
     // Livereload
