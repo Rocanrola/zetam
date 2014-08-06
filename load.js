@@ -19,15 +19,21 @@ exports.controller = function (name) {
 
 exports.page = function(name,methodName,args,cb){
 	var that = this;
-	var pagePath = this.resolve('pages/'+name);
+	var pagePath;
+
+	if(name.search('/') != -1){
+		// is a path
+		pagePath = name;
+	}else{
+		pagePath = this.resolve('pages/'+name);
+	}
 	
 	if(pagePath){
 		var page = new Page();
 
 		args = args || {};
 
-		this.loadModuleResources(page,args,pagePath);
-
+		this.loadModuleResources(page,args,pagePath);	
 		page.loadModelFromMethodAndRender(methodName,args,function(){
 			this.renderComponentTags(args,function(err){
 				cb.call(page,null,page);
@@ -40,7 +46,14 @@ exports.page = function(name,methodName,args,cb){
 
 exports.component = function(name,methodName,args,cb){
 	var that = this;
-	var componentPath = this.resolve('components/'+name);
+
+	if(name.search('/') != -1){
+		// is a path
+		componentPath = name;
+	}else{
+		componentPath = this.resolve('components/'+name);
+	}
+
 	var component = new Component();
 
 	args = args || {};
@@ -58,6 +71,7 @@ exports.loadModuleResources = function(obj,args,modulePath){
 	}
 
 	args = args || {};
+	args.globals = args.globals || {};
 
 	var templateFileName = (args['data-template'] || 'template') + '.html';
 
@@ -67,7 +81,7 @@ exports.loadModuleResources = function(obj,args,modulePath){
 
 
 	if(fs.existsSync(i18nPath)){
-		obj.i18n = utils.mergei18n(require(i18nPath),args.globals.locale);
+		obj.i18n = utils.mergei18n(require(i18nPath),args.globals.locale || 'ar');
 	}
 
 	if(fs.existsSync(templatePath)){
