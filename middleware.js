@@ -7,9 +7,10 @@ module.exports = function (req,res,next) {
 }
 
 var router = function(req,res,next){
-	var data = {
-		globals:req.config || {}
-	}
+	var data = {}
+	
+	data.globals = req.config || {};
+	data.globals.resource = req.resource;
 
 	var pageName = req.resource.name || 'index';
 	var methodName = req.method.toLowerCase() || 'get';
