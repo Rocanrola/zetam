@@ -8,7 +8,7 @@ module.exports = function (req,res,next) {
 
 var router = function(req,res,next){
 	var data = {
-		globals:req.config || config
+		globals:req.config || {}
 	}
 
 	var pageName = req.resource.name || 'index';
