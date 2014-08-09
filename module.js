@@ -1,11 +1,11 @@
 var path = require('path');
 var fs = require('fs');
 var mustache = require('mustache');
-var utils = require('./utils');
 
 var Module = function (name) {
 	this.model = {};
 	this.i18n = {};
+	this.conf = {};
 	this.template = '';
 	this.html = '';
 	this.controller = null;
@@ -13,7 +13,7 @@ var Module = function (name) {
 
 Module.prototype = {
 	render:function(cb){
-		var data = { model: this.model, i18n:this.i18n }
+		var data = { model: this.model, i18n:this.i18n, config:this.config }
 
 		this.html = mustache.render(this.template, data);
 		
@@ -21,22 +21,24 @@ Module.prototype = {
 			cb.call(this,this.html);
 		}
 	},
-	loadModelFromMethodAndRender:function(methodName,args,cb){
-		var that = this;
-
+	method:function(methodName,cb){
 		if(this.controller && (methodName in this.controller)){
-			this.controller[methodName](args,function(err,model){
-				if(!err && model){
-					that.model = model;
-					
-					that.render(function(){
-						cb.call(that);
-					});
-				}else{
-					cb({error:'SOMETHING_WRONG_WITH_METHOD'})
-				}
-			})
+			this.controller[methodName](this.config,cb);
+		}else{
+			cb({error:'METHOD_NOT_FOUND_IN_CONTROLLER'});
 		}
+	},
+	setModelAndConfigFromMethod:function(methodName,cb){
+		var that = this;
+		this.method(methodName,function(err,model,config){
+			if(!err){
+				that.model = model || that.model;
+				that.config = config || that.config;
+				cb(null,that);
+			}else{
+				cb({error:'SOMETHING_WRONG_WITH_METHOD'})
+			}
+		})
 	}
 }
 

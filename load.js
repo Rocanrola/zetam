@@ -19,25 +19,18 @@ exports.controller = function (name) {
 
 exports.page = function(name,methodName,args,cb){
 	var that = this;
-	var pagePath;
+		args = args || {};
+		methodName = methodName || 'get';
 
-	if(name.search('/') != -1){
-		// is a path
-		pagePath = name;
-	}else{
-		pagePath = this.resolve('pages/'+name);
-	}
+	var pagePath = (name.search('/') != -1) ? name : this.resolve('pages/'+name);
 	
 	if(pagePath){
+
 		var page = new Page();
-
-		args = args || {};
-
-		this.loadModuleResources(page,args,pagePath);	
-		page.loadModelFromMethodAndRender(methodName,args,function(){
-			this.renderComponentTags(args,function(err){
+		this.moduleResourcesAndRender(page,pagePath,methodName,args,function(){
+			page.renderComponentTags(function(err){
 				cb.call(page,null,page);
-			})
+			})	
 		})
 	}else{
 		cb({error:'page ' + name + ' path not found'});
@@ -47,51 +40,64 @@ exports.page = function(name,methodName,args,cb){
 exports.component = function(name,methodName,args,cb){
 	var that = this;
 
-	if(name.search('/') != -1){
-		// is a path
-		componentPath = name;
+	var componentPath = (name.search('/') != -1) ? name : this.resolve('components/'+name);
+
+	if(componentPath){
+		var component = new Component();
+
+		this.moduleResourcesAndRender(component,componentPath,methodName,args,function(){
+			cb.call(component,null,component);	
+		})
+			
 	}else{
-		componentPath = this.resolve('components/'+name);
+		cb({error:'page ' + name + ' path not found'});
 	}
-
-	var component = new Component();
-
-	args = args || {};
-
-	this.loadModuleResources(component,args,componentPath);
-
-	component.loadModelFromMethodAndRender(methodName,args,function(){
-		cb.call(component,null,component);
-	})
 }
 
-exports.loadModuleResources = function(obj,args,modulePath){
-	if(!modulePath){
-		return false;
-	}
+exports.moduleResourcesAndRender = function(module,modulePath,methodName,args,cb){
+	var that = this;
 
-	args = args || {};
-	args.globals = args.globals || {};
+	module.config = utils.cloneObject(args);
+	module.controller = this.moduleController(modulePath);
 
-	var templateFileName = (args['data-template'] || 'template') + '.html';
+	module.setModelAndConfigFromMethod(methodName,function(err){
+		module.i18n = that.moduleI18n(modulePath,module.config.globals.locale);
+		module.template = that.moduleTemplate(modulePath,module.config['data-template']);
+		module.render(function(){
+			cb.call(module,null,module);
+		});
+	});
+}
 
+exports.moduleController = function(modulePath){
 	var controllerPath = path.resolve(modulePath,'controller');
-	var i18nPath = path.resolve(modulePath,'i18n.json');
-	var templatePath = path.resolve(modulePath,templateFileName);
-
-
-	if(fs.existsSync(i18nPath)){
-		obj.i18n = utils.mergei18n(require(i18nPath),args.globals.locale || 'ar');
-	}
-
-	if(fs.existsSync(templatePath)){
-		obj.template = fs.readFileSync(templatePath).toString();
-	}
 	
 	if(fs.existsSync(controllerPath+'.js')){
-		obj.controller = require(controllerPath);
+		return require(controllerPath);
+	}else{
+		return null;
 	}
+}
+exports.moduleI18n = function(modulePath,locale){
+	var i18nPath = path.resolve(modulePath,'i18n.json');
 
+	if(fs.existsSync(i18nPath)){
+		var i18n = require(i18nPath);
+		return utils.mergei18n(i18n, locale || 'ar');
+	}else{
+		return null;
+	}
+}
+
+exports.moduleTemplate = function(modulePath, templateName){
+	templateName = templateName || 'template';
+
+	var templatePath = path.resolve(modulePath,templateName + '.html');
+	if(fs.existsSync(templatePath)){
+		return fs.readFileSync(templatePath).toString();
+	}else{
+		return null;
+	}
 }
 
 exports.resolve = function(item){
