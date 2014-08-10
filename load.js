@@ -20,6 +20,7 @@ exports.controller = function (name) {
 exports.page = function(name,methodName,args,cb){
 	var that = this;
 		args = args || {};
+		args.moduleName = name;
 		methodName = methodName || 'get';
 
 	var pagePath = (name.search('/') != -1) ? name : this.resolve('pages/'+name);
@@ -39,6 +40,9 @@ exports.page = function(name,methodName,args,cb){
 
 exports.component = function(name,methodName,args,cb){
 	var that = this;
+		args = args || {};
+		args.moduleName = name;
+		methodName = methodName || 'init';
 
 	var componentPath = (name.search('/') != -1) ? name : this.resolve('components/'+name);
 
