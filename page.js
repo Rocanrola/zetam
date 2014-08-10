@@ -28,7 +28,9 @@ Page.prototype.renderComponentTags = function(cb){
 			componentArgs.globals = that.config.globals || {};
 
 	    load.component(componentName,'init',componentArgs,function(err,component){
-	    	componentElement.html(component.html);
+	    	if(!err){
+	    		componentElement.html(component.html);
+	    	}
 	    	callback();
 	    })
     }, function(err) {

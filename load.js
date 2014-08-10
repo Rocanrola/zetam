@@ -54,7 +54,7 @@ exports.component = function(name,methodName,args,cb){
 		})
 			
 	}else{
-		cb({error:'page ' + name + ' path not found'});
+		cb({error:'component ' + name + ' path not found'});
 	}
 }
 
