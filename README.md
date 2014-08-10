@@ -195,6 +195,21 @@ var signup = require('../../components/homePage/view');
 // page client side logic
 document.getElementsByTagName('h2')[0].innerText = ('how you doing?');
 ```
+## Gulp support ##
+
+Zetam has a helper that automatically compile JS and CSS into the **public** directory:
+
+```js
+// gulpfile.js (example)
+var gulp = require('gulp');
+var z = require('zetam');
+
+// this creates a zetam task
+z.gulp(gulp);
+
+// set the zetam task as the default
+gulp.task('default', ['zetam']);
+```
 
 
 Quick look (example project)
