@@ -14,7 +14,7 @@ module.exports = function (req,res,next) {
 		var controller = load.moduleController(componentPath);
 
 		if(controller){
-			controller[methodName].call(controller,req.query,function(err,response){
+			controller[methodName].call(controller,req.query,function(response){
 				res.json(response);
 			});
 		}else{
