@@ -11,12 +11,10 @@ module.exports = function (req,res,next) {
 		
 		var methodName = req.resource.subresource.id;
 		var componentPath = load.resolve('components/'+req.resource.id);
-		var controllerPath = componentPath+'/controller';
+		var controller = load.moduleController(componentPath);
 
-		if(componentPath && fs.existsSync(controllerPath+'.js')){
-			var controller = require(controllerPath);
-			
-			controller[methodName].call(controller,req.query,function(err,response){
+		if(controller){
+			controller[methodName].call(controller,req.query,function(response){
 				res.json(response);
 			});
 		}else{

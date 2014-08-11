@@ -12,24 +12,25 @@ var Page = function(pageName){
 // extiende Module
 Page.prototype = Object.create(Module.prototype);
 
-Page.prototype.renderComponentTags = function(args,cb){
+Page.prototype.renderComponentTags = function(cb){
 	var that = this;
 
 	var pageDom = $.load(this.html);
     var componentTags = pageDom("[data-component]");
 
-    args = args || {};
 
     async.forEach(componentTags, function(elem, callback) {
         var componentElement = $(elem);
 	    var componentName = componentElement.data('component');
 		
 		var componentArgs = utils.cloneObject(componentElement.attr());
-			componentArgs.parent = args;
-			componentArgs.globals = args.globals;
+			componentArgs.parent = that.config;
+			componentArgs.globals = that.config.globals || {};
 
 	    load.component(componentName,'init',componentArgs,function(err,component){
-	    	componentElement.html(component.html);
+	    	if(!err){
+	    		componentElement.html(component.html);
+	    	}
 	    	callback();
 	    })
     }, function(err) {

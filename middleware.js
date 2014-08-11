@@ -7,19 +7,18 @@ module.exports = function (req,res,next) {
 }
 
 var router = function(req,res,next){
-	var data = {
-		globals:req.config || {}
-	}
+	var data = {}
+	
+	data.globals = req.config || {};
+	data.globals.resource = req.resource;
 
 	var pageName = req.resource.name || 'index';
 	var methodName = req.method.toLowerCase() || 'get';
 
-	var controller = load.controller(pageName);
+	var controller = (pageName === 'components') ? require('./controllers/components') : load.controller(pageName);
 	
-	if(pageName === 'components'){
-		require('./controllers/components').call(controller,req,res,next);
-	}else if(controller){
-		controller[methodName].call(controller,req,res,next);
+	if(controller){
+		controller.call(controller,req,res,next);
 	}else{
 		load.page(pageName, methodName, data, function(err,page){
 			if(!err){

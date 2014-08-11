@@ -7,6 +7,7 @@ var $ = {
     nodemon:require('gulp-nodemon'),
     plumber:require('gulp-plumber'),
     less:require('gulp-less'),
+    prefix:require('gulp-autoprefixer'),
     rename:require('gulp-rename'),
     browserify:require('gulp-browserify')
 }
@@ -32,6 +33,7 @@ module.exports = function(gulp,conf) {
         return gulp.src(addEach(componentPaths,'/**/styles.less'))
             .pipe($.plumber())
             .pipe($.less())
+            .pipe($.prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
             .pipe($.rename(function(path) {
                 path.basename = path.dirname;
                 path.dirname = '';
@@ -43,6 +45,7 @@ module.exports = function(gulp,conf) {
         return gulp.src(addEach(pagesPaths,'/**/bundle.less'))
             .pipe($.plumber())
             .pipe($.less())
+            .pipe($.prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
             .pipe($.rename(function(path) {
                 path.basename = path.dirname;
                 path.dirname = '';
@@ -59,29 +62,29 @@ module.exports = function(gulp,conf) {
 
     // Browserify
 
-    gulp.task('browserify', function() {
-        conf.paths.forEach(function(path){
+    gulp.task('browserify-components', function() {
+        return gulp.src(addEach(componentPaths,'/**/view.js'))
+            .pipe($.plumber())
+            .pipe($.browserify())
+            .pipe($.rename(function(path) {
+                path.basename = path.dirname;
+                path.dirname = '';
+            }))
+            .pipe(gulp.dest('./public/js/components/'));
+    })
 
-            gulp.src(path+'/components/**/view.js')
-                    .pipe($.plumber())
-                    .pipe($.browserify())
-                    .pipe($.rename(function(path) {
-                        path.basename = path.dirname;
-                        path.dirname = '';
-                    }))
-                    .pipe(gulp.dest('./public/js/components/'));
+    gulp.task('browserify-pages', function() {
+        return gulp.src(addEach(pagesPaths,'/**/view.js'))
+            .pipe($.plumber())
+            .pipe($.browserify())
+            .pipe($.rename(function(path) {
+                path.basename = path.dirname;
+                path.dirname = '';
+            }))
+            .pipe(gulp.dest('./public/js/pages/'));
+    })
 
-            gulp.src(path+'/pages/**/view.js')
-                    .pipe($.plumber())
-                    .pipe($.browserify())
-                    .pipe($.rename(function(path) {
-                        path.basename = path.dirname;
-                        path.dirname = '';
-                    }))
-                    .pipe(gulp.dest('./public/js/pages/'));
-        })
-
-    });
+    gulp.task('browserify',['browserify-components','browserify-pages']);
 
     gulp.task('browserify-and-autoreload',['browserify'], function() {
         livereload.changed({path:'once.js'});

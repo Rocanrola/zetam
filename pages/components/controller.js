@@ -1,5 +1,4 @@
 exports.get = function (conf,cb) {
-	console.log(conf)
 	cb(null,{
 		componentName:conf.resource.id
 	});
