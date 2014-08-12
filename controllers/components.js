@@ -2,7 +2,7 @@ var load = require('../load');
 var fs = require('fs');
 var path = require('path');
 
-module.exports = function (req,res,next) {
+exports.get = function (req,res,next) {
 	var data = req.query;
 		data.globals = req.config || {};
 
@@ -13,7 +13,7 @@ module.exports = function (req,res,next) {
 		var componentPath = load.resolve('components/'+req.resource.id);
 		var controller = load.moduleController(componentPath);
 
-		if(controller){
+		if(controller && (methodName in controller)){
 			controller[methodName].call(controller,req.query,function(error,response){
 				res.json({err:error,res:response});
 			});

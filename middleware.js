@@ -17,8 +17,8 @@ var router = function(req,res,next){
 
 	var controller = (pageName === 'components') ? require('./controllers/components') : load.controller(pageName);
 	
-	if(controller){
-		controller.call(controller,req,res,next);
+	if(controller && (methodName in controller)){
+		controller[methodName].call(controller,req,res,next);
 	}else{
 		load.page(pageName, methodName, data, function(err,page){
 			if(!err){
