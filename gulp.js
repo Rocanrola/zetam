@@ -98,8 +98,8 @@ module.exports = function(gulp,conf) {
                         .concat(['./less/**/*.less']);
 
         // jsCs == Javascript Clien Side
-        var jsCsPaths = addEach(componentPaths,'/**/*.js')
-                        .concat(addEach(pagesPaths,'/**/*.js'))
+        var jsCsPaths = addEach(componentPaths,'/**/view.js')
+                        .concat(addEach(pagesPaths,'/**/view.js'))
                         .concat(['./scripts/**/*.js']);
 
         var templatesPaths = addEach(componentPaths,'/**/*.html')
@@ -117,11 +117,10 @@ module.exports = function(gulp,conf) {
     });
 
     // Express
-
     gulp.task('server',function() {
-        $.nodemon({
+        return $.nodemon({
             script: 'app.js',
-            ext: 'json',
+            ext: 'js json',
             ignore: ['**/view.js','public/**'], 
             env: {
                 'NODE_ENV': 'development',
@@ -134,7 +133,7 @@ module.exports = function(gulp,conf) {
         });
     });
 
-    gulp.task('zetam', ['livereload','browserify','less','server','watch']);
+    gulp.task('zetam', ['livereload','browserify','less','watch','server']);
     gulp.task('zetam-build', ['browserify','less']);
 
 }
