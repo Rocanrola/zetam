@@ -153,8 +153,8 @@ body{
 // it's also compiled by the zetam.gulp task into the public directory
 // (public/js/pages/example.js).
 
-// importing homePage client side logic
-var signup = require('../../components/homePage/view');
+// importing coolComponent client side logic
+var signup = require('../../components/coolComponent/view');
 
 
 // page client side logic
@@ -163,13 +163,6 @@ document.getElementsByTagName('h2')[0].innerText = ('how you doing?');
 Components
 -------------
 Components are pieces with it's own logic, server and client side, templates, styles and i18n. 
-
-In order to insert a component in a Page a HTML tag can be used like this:
-
-```html
-<div data-component="coolComponent" data-param="Apple rocks"></div>
-```
-(Components can be only be embedded from a Page)
 
 It's possible preview a component using the special **component** controller (it comes with Zetam)
 
@@ -189,6 +182,7 @@ Example component directory structure:
              - template.html
              - bundle.less
              - view.js
+
 
 ```js
 //project/components/coolComponent/controller.js
@@ -276,6 +270,23 @@ z.registerComponent({
     }
 })
 ```
+
+## Using Components ##
+
+In order to insert a component in a Page an HTML tag can be used like this:
+
+```html
+<div data-component="coolComponent" data-param="Apple rocks"></div>
+```
+Components can only be embedded from Pages.
+
+A **data-template** attribute can be passed and modify wich template file will be used.
+
+```html
+<div data-component="coolComponent" data-param="Apple rocks" data-template="small"></div>
+```
+
+Says to zetam that use **small.html** file instead the default **template.html**
 
 
 Middleware
