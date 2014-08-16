@@ -8,6 +8,275 @@ Install
 ```sh
 npm install zetam
 ```
+Plug the middleware in your app.
+
+```js
+var z = require('zetam');
+var express = require('express');
+var app = new express();
+
+app.use(function(req,res,next){
+    req.config.locale = 'es';
+    next();
+});
+
+// the potato
+app.use(z.middleware);
+
+app.listen(3000,function () {
+    console.log('running on port ' + port);
+});
+```
+Ready ! Start to create Pages and Components.
+
+Pages & Components
+-------------
+Pages and components are pretty similar. The main difference is the use of each. Pages should have minimum amount of business logic and are pretty much a layout to hold components. Components, in the other side, are ideal to reusable pieces with logic and many templates.
+
+Pages
+-------------
+Pages are the initial logic piece for every URL. Each one has it own templates, server and client side logic. 
+
+Example page directory structure:
+
+ - **project**
+     - app.js
+     - **pages**
+         - **example**
+             - controller.js
+             - i18n.json (optional)
+             - template.html
+             - bundle.less
+             - view.js
+
+In order to see **example** Page, browse http://localhost:3000/example
+
+```js
+//project/pages/example/controller.js
+// In this case the request is a GET request 
+// so, Zetam will load get method from Controller
+
+exports.get = function (conf,cb) {
+    // conf: has globals object (req.config), and resource object (pathname)
+    // both comes from the middleware.
+    
+    // cb: callback function. It receives two parameters: 
+    // error and model object (plain object to be passed to the template)
+    
+    console.log(conf);
+    console.log(conf.globals); // this comes from req.cofig
+    console.log(conf.resource); // this represents the URL
+    
+    var model = {
+        title:'page title'
+    }
+    
+    cb(null,model)
+}
+```
+
+```js
+//project/pages/example/i18n.json
+
+// Zetam will merge this two objects based on 
+// req.config.locale value ("es" for this example)
+
+{
+    "all": {
+        "greetings": "Howdy stranger !",
+        "bye": "Bye bye !!! Please come back",
+    },
+    "es": {
+        "greetings": "Hola !!"
+    }
+}
+
+```
+```css
+//project/pages/example/bundle.less
+
+// has page LESS styles, and also import 
+// all the components LESS stylesheets used on the page. 
+// It's automatically compiled to public directory 
+// (public/css/pages/example.css) if you use zetam.gulp task.
+
+@import "components/signup/styles";
+@import "less/globals/colors";
+
+body{
+    background-color:@mainColor;
+    font-family: sans-serif;
+    
+    header {
+        height: 6rem;
+        margin: auto;
+    }
+}
+```
+
+```html
+<!--project/pages/example/template.html-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="/css/pages/example.css">
+    <title>{{model.title}}</title>
+    <!-- model object comes from controller reponse -->
+</head>
+<body data-country="{{i18n.locale}}">
+    <header>
+        <h1>
+           {{i18n.greetings}}
+           <!-- This will print "Hola !!" -->
+        </h1>
+        <h2></h2>
+    </header>
+    
+    <div data-component="coolComponent" data-param="Apple rocks"></div>
+    <!-- This inject the coolComponent component (see Components section) -->
+    
+    <footer>
+        {{i18n.bye}}
+        <!-- This will print "Bye bye !!! Please come back" -->
+    </footer>
+
+    <script src="/js/pages/example.js"></script>
+</body>
+</html>
+```
+```js
+// project/pages/example/view.js
+
+// It's a browserify module, so you can import and use node modules. 
+// Also it is helpfull to import component view logic. 
+// it's also compiled by the zetam.gulp task into the public directory
+// (public/js/pages/example.js).
+
+// importing homePage client side logic
+var signup = require('../../components/homePage/view');
+
+
+// page client side logic
+document.getElementsByTagName('h2')[0].innerText = ('how you doing?');
+```
+Components
+-------------
+Components are pieces with it's own logic, server and client side, templates, styles and i18n. 
+
+In order to insert a component in a Page a HTML tag can be used like this:
+
+```html
+<div data-component="coolComponent" data-param="Apple rocks"></div>
+```
+(Components can be only be embedded from a Page)
+
+It's possible preview a component using the special **component** controller (it comes with Zetam)
+
+
+http://localhost:3000/components/coolComponent?preview=true
+
+
+
+Example component directory structure:
+
+ - **project**
+     - app.js
+     - **components**
+         - **coolComponent**
+             - controller.js
+             - i18n.json (optional)
+             - template.html
+             - bundle.less
+             - view.js
+
+```js
+//project/components/coolComponent/controller.js
+
+exports.init = function (conf,cb) {
+    // conf: has globals object (req.config) and
+    // all the attributes in the html tag
+    
+    // cb: callback function. It receives two parameters: 
+    // error and model object (plain object to be passed to the template)
+    
+    console.log(conf);
+    console.log(conf.globals); // this comes from req.cofig
+    console.log(conf['data-param']); // this comes from the html tag
+    
+    var model = {
+        text:conf['data-param']
+    }
+    
+    cb(null,model)
+}
+```
+
+```js
+//project/components/coolComponent/i18n.json
+
+// Zetam will merge this object (all and es)  on 
+// req.config.locale value ("es" for this example)
+
+{
+    "all": {
+        "hey": "Hey you !"
+    },
+    "es": {
+        "hey": "Hola !"
+    }
+}
+
+```
+```css
+//project/components/coolComponent/bundle.less
+
+// has page LESS styles
+// It's automatically compiled to public directory 
+// (public/css/pages/coolComponent.css) if you use zetam.gulp task.
+
+
+[data-component=coolComponent]{
+    height: 50px;
+    padding: 1px;
+    background-color: blue;
+    border:solid 2px red;
+    
+    button.main{
+        background-color: white;
+        padding:20px;
+    }
+}
+
+```
+
+```html
+<!--project/components/coolComponent/template.html-->
+<span>{{i18n.hey}}</span> <strong> {{model.text }}</strong>
+<button class="main">Message</button>
+```
+```js
+// project/components/coolComponent/view.js
+
+// It's a browserify module, so you can import and use node modules. 
+// it's also compiled by the zetam.gulp task into the public directory
+// (public/js/components/coolComponent.js).
+// it's highly recommended use zetam-client module
+// https://www.npmjs.org/package/zetam-client
+
+var z = require('zetam-client');
+
+z.registerComponent({
+    name:'coolComponent',
+    init:function () {
+        this.bindEvent('button.main','click','showMessage')
+    },
+    showMessage:function(){
+        alert('Message');
+    }
+})
+```
+
 
 Middleware
 -------------
@@ -21,6 +290,7 @@ var app = new express();
 app.use(function(req,res,next){
     // this is needed for i18n
     req.config.locale = 'es';
+    req.config.siteName = 'Example Website';
     next();
 });
 
@@ -87,114 +357,6 @@ app.listen(3000,function () {
 
 req.config object is the way to send data to all pages and components. For example **req.config.locale** is used to choice the language and render i18n.json objects inside templates. Also all the req.config is passed to the pages and components controllers like the **globals** object.
 
-Pages
--------------
-Pages are the initial logic piece for every URL. Each one has it own templates, server and client side logic.
-
-Example pages directory structure:
-
- - **project**
-     - app.js
-     - **pages**
-         - **index**
-         - **example**
-         - **products**
-
-Inside each page directory, five files are needed.
-
-**project/pages/example**
-
- - controller.js
- - i18n.json (optional)
- - template.html
- - bundle.less
- - view.js
-
-```js
-//project/pages/example/controller.js
-
-exports.get = function (conf,cb) {
-
-    // conf: has globals object (req.config), and resource object (pathname)
-    // cb: callback function. It receives two parameters: error and model object (plain object to be passed to the template)
-    console.log(conf);
-    cb(null,{title:'page title'})
-}
-```
-
-```js
-//project/pages/example/i18n.json
-// Zetam will merge this two objects based on req.config.locale value ("es" for this example) and pass it to the template
-
-{
-    "all": {
-        "greetings": "Howdy stranger !",
-        "bye": "Bye bye !!! Please come back",
-    },
-    "es": {
-        "greetings": "Hola !!"
-    }
-}
-
-```
-```css
-// has page LESS styles, and also import all the components LESS stylesheets used on the page. It's automatically compiled to public directory (public/css/pages/example.css) if you use zetam.gulp task.
-
-@import "components/signup/styles";
-@import "less/globals/colors";
-
-body{
-    background-color:@mainColor;
-    font-family: sans-serif;
-    
-    header {
-        height: 6rem;
-        margin: auto;
-    }
-}
-```
-
-```html
-<!--project/pages/example/template.html-->
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <link rel="stylesheet" href="/css/pages/example.css">
-    <title>{{model.title}}</title>
-    <!-- model object comes from controller reponse -->
-</head>
-<body data-country="{{i18n.locale}}">
-    <header>
-        <h1>
-           {{i18n.greetings}}
-           <!-- This will print "Hola !!" -->
-        </h1>
-        <h2></h2>
-    </header>
-    
-    <div data-component="homePage"></div>
-    <!-- This inject the homePage component (see Components section) -->
-    
-    <footer>
-        {{i18n.bye}}
-        <!-- This will print "Bye bye !!! Please come back" -->
-    </footer>
-
-    <script src="/js/pages/example.js"></script>
-</body>
-</html>
-```
-```js
-// It's a browserify module, so you can import and use node modules. Also it is helpfull to import component view logic (bundle). it's also compiled by the zetam.gulp task into the public directory (public/js/pages/example.js).
-
-// importing homePage client side logic
-var signup = require('../../components/homePage/view');
-
-
-// page client side logic
-document.getElementsByTagName('h2')[0].innerText = ('how you doing?');
-```
 ## Gulp support ##
 
 Zetam has a helper that automatically compile JS and CSS into the **public** directory:
