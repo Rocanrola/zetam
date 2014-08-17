@@ -162,7 +162,7 @@ document.getElementsByTagName('h2')[0].innerText = ('how you doing?');
 ```
 Components
 -------------
-Components are pieces with it's own logic, server and client side, templates, styles and i18n. 
+Components are pieces with it's own server and client side logic, templates, styles and i18n. 
 
 It's possible preview a component using the special **component** controller (it comes with Zetam)
 
@@ -305,6 +305,9 @@ app.use(function(req,res,next){
     next();
 });
 
+// set 'public' static folder
+app.use(express.static(__dirname + '/public'));
+
 // the potato
 app.use(z.middleware);
 
@@ -357,6 +360,9 @@ app.use(function(req,res,next){
     }
     next();
 });
+
+// set 'public' static folder
+app.use(express.static(__dirname + '/public'));
 
 // the potato
 app.use(z.middleware);
