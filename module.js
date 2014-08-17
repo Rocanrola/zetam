@@ -36,7 +36,7 @@ Module.prototype = {
 				that.config = config || that.config;
 				cb(null,that);
 			}else{
-				cb({error:'SOMETHING_WRONG_WITH_METHOD'})
+				cb(err)
 			}
 		})
 	}
