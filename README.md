@@ -20,6 +20,9 @@ app.use(function(req,res,next){
     next();
 });
 
+// set 'public' static folder
+app.use(express.static(__dirname + '/public'));
+
 // the potato
 app.use(z.middleware);
 
