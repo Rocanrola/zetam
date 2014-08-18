@@ -162,6 +162,11 @@ var signup = require('../../components/coolComponent/view');
 
 // page client side logic
 document.getElementsByTagName('h2')[0].innerText = ('how you doing?');
+
+// if you are using zetam-client module to create Components 
+// client side logic, this is necessary
+var z = require('zetam-client');
+z.initDomComponents();
 ```
 Components
 -------------
@@ -264,7 +269,7 @@ exports.init = function (conf,cb) {
 var z = require('zetam-client');
 
 z.registerComponent({
-    name:'coolComponent',
+    name:'coolComponent', 
     init:function () {
         this.bindEvent('button.main','click','showMessage')
     },
@@ -272,24 +277,34 @@ z.registerComponent({
         alert('Message');
     }
 })
+
+// This register a new componen but not create an instance.
+// In order to create an instance an link the instance with the 
+// dom element is necessary run z.initDomComponents();
+// it's recommended run this command from the Page view.js
+// because it has to be run once, when the dom is ready.
 ```
 
 ## Using Components ##
 
-In order to insert a component in a Page an HTML tag can be used like this:
+In order to insert a component in a Page an HTML tag. Components can only be embedded from Pages like this:
 
 ```html
+<div data-component="coolComponent"></div>
+```
+ Al the attributes added to the tag are passed to the Component controller in the first parameter.
+
+ ```html 
 <div data-component="coolComponent" data-param="Apple rocks"></div>
 ```
-Components can only be embedded from Pages.
 
-A **data-template** attribute can be passed and modify wich template file will be used.
+The **data-template**  modify which template file will be used.
 
 ```html
 <div data-component="coolComponent" data-param="Apple rocks" data-template="small"></div>
 ```
 
-Says to zetam that use **small.html** file instead the default **template.html**
+Says to zetam: use **small.html** file instead the default **template.html**
 
 
 Middleware
