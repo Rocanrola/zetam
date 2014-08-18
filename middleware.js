@@ -11,7 +11,8 @@ var router = function(req,res,next){
 	
 	config.globals = req.config || {};
 	config.globals.resource = req.resource;
-	config.globals.cookies = req.cookies || null;
+	config.globals.cookies = req.cookies || {};
+	config.globals.query = req.query || {};
 
 	var pageName = req.resource.name || 'index';
 	var methodName = req.method.toLowerCase() || 'get';

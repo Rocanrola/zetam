@@ -364,10 +364,11 @@ Will load **user** page, and execute **post** method (from the controller). This
 
 conf.globals
 ----------
-All Pages and Components receive a **conf** (first) parameter in the controller. This is a copy of req.config and also includes some other helpful resources:
+All Pages and Components receive a **conf** (first) parameter in the controller. This is a copy of req.config and also includes the **globals** object with some helpful resources:
 
  - **resource** : Object that represent the current URL
  - **cookies** : Cookies from the request
+ - **query** : Query object from the URL
 
 req.config
 ----------
