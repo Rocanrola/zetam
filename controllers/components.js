@@ -14,7 +14,8 @@ exports.get = function (req,res,next) {
 		var controller = load.moduleController(componentPath);
 
 		if(controller && (methodName in controller)){
-			controller[methodName].call(controller,req.query,function(error,response){
+			var methodParams = req.query.jsonString ? JSON.parse(req.query.jsonString) : req.query;
+			controller[methodName].call(controller,methodParams,function(error,response){
 				res.json({err:error,res:response});
 			});
 		}else{
