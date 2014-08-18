@@ -285,7 +285,8 @@ z.registerComponent({
 // because it has to be run once, when the dom is ready.
 ```
 
-## Using Components ##
+ Using Components
+-------------
 
 In order to insert a component in a Page an HTML tag. Components can only be embedded from Pages like this:
 
@@ -306,6 +307,25 @@ The **data-template**  modify which template file will be used.
 
 Says to zetam: use **small.html** file instead the default **template.html**
 
+Components special controller
+-------------
+
+Zetam includes an special controller named **components** it allow execute components in different ways.
+
+
+    /components/coolComponent?data-template=small&data-param=Apple rocks
+
+Execute the component in the same way that HTML tag does, this is very useful for ajax. This doesn't include CSS or client side Javascript.
+
+    /components/coolComponent?preview=true
+
+Execute the component in a Page context and include CSS and client side logic (view.js), it's very useful in development.
+
+    /components/coolComponent/method/someMethod?text=Hi%20there
+
+    /components/coolComponent/method/someMethod?jsonString={text:'Hi there'}
+    
+Execute some method exported from the component controller (like init). This can receive regular query parameters, or an special jsonString parameter that tells to Zetam automatically parse that string and take it like params. This last option is useful for complex JSON trees. 
 
 Middleware
 -------------
