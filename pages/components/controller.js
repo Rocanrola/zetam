@@ -1,6 +1,8 @@
 exports.get = function (conf,cb) {
 	cb(null,{
-		componentName:conf.resource.id
+		model:{
+			componentName:conf.resource.id
+		}
 	});
 }
 

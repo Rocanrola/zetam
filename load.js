@@ -28,10 +28,14 @@ exports.page = function(name,methodName,args,cb){
 	if(pagePath){
 
 		var page = new Page();
-		this.moduleResourcesAndRender(page,pagePath,methodName,args,function(){
-			page.renderComponentTags(function(err){
-				cb.call(page,null,page);
-			})	
+		this.moduleResourcesAndRender(page,pagePath,methodName,args,function(err){
+			if(!err){
+				page.renderComponentTags(function(err){
+					cb.call(page,null,page);
+				})	
+			}else{
+				cb(err);
+			}
 		})
 	}else{
 		cb({error:'page ' + name + ' path not found'});
@@ -49,8 +53,12 @@ exports.component = function(name,methodName,args,cb){
 	if(componentPath){
 		var component = new Component();
 
-		this.moduleResourcesAndRender(component,componentPath,methodName,args,function(){
-			cb.call(component,null,component);	
+		this.moduleResourcesAndRender(component,componentPath,methodName,args,function(err){
+			if(!err){
+				cb.call(component,null,component);	
+			}else{
+				cb(err);
+			}
 		})
 			
 	}else{
@@ -65,11 +73,15 @@ exports.moduleResourcesAndRender = function(module,modulePath,methodName,args,cb
 	module.controller = this.moduleController(modulePath);
 
 	module.setModelAndConfigFromMethod(methodName,function(err){
-		module.i18n = that.moduleI18n(modulePath,module.config.globals.locale);
-		module.template = that.moduleTemplate(modulePath,module.config['data-template']);
-		module.render(function(){
-			cb.call(module,null,module);
-		});
+		if(!err){
+			module.i18n = that.moduleI18n(modulePath,module.config.locale);
+			module.template = that.moduleTemplate(modulePath,module.config['data-template']);
+			module.render(function(){
+				cb.call(module,null,module);
+			});
+		}else{
+			cb(err);
+		}
 	});
 }
 

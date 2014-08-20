@@ -3,9 +3,7 @@ var fs = require('fs');
 var path = require('path');
 
 exports.get = function (req,res,next) {
-	var data = req.query;
-		data.globals = req.config || {};
-
+	var data = req.config;
 
 	if(req.resource.subresource && req.resource.subresource.name == 'method' && req.resource.subresource.id){
 		
@@ -14,7 +12,8 @@ exports.get = function (req,res,next) {
 		var controller = load.moduleController(componentPath);
 
 		if(controller && (methodName in controller)){
-			controller[methodName].call(controller,req.query,function(error,response){
+			var methodParams = req.query.jsonString ? JSON.parse(req.query.jsonString) : req.query;
+			controller[methodName].call(controller,methodParams,function(error,response){
 				res.json({err:error,res:response});
 			});
 		}else{
@@ -25,12 +24,6 @@ exports.get = function (req,res,next) {
 
 		if(req.query.preview === 'true'){
 			var pagePath = path.resolve(__dirname,'../','pages/components');
-			
-			var data = {
-				resource:req.resource,
-				query:req.query,
-				globals:req.config
-			}
 			
 			load.page(pagePath,'get',data,function(err,page){
 				res.send(page.html);

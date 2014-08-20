@@ -7,10 +7,11 @@ module.exports = function (req,res,next) {
 }
 
 var router = function(req,res,next){
-	var data = {}
 	
-	data.globals = req.config || {};
-	data.globals.resource = req.resource;
+	req.config = req.config || {};
+	req.config.resource = req.resource;
+	req.config.cookies = req.cookies || {};
+	req.config.query = req.query || {};
 
 	var pageName = req.resource.name || 'index';
 	var methodName = req.method.toLowerCase() || 'get';
@@ -20,9 +21,11 @@ var router = function(req,res,next){
 	if(controller && (methodName in controller)){
 		controller[methodName].call(controller,req,res,next);
 	}else{
-		load.page(pageName, methodName, data, function(err,page){
+		load.page(pageName, methodName, req.config, function(err,page){
 			if(!err){
 				res.end(utils.minifyHTML(page.html));
+			}else if(err.redirect){
+				res.redirect(err.redirect.code || 301, err.redirect.url);
 			}else{
 				console.error(err);
 				res.send(404);

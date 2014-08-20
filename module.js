@@ -5,7 +5,7 @@ var mustache = require('mustache');
 var Module = function (name) {
 	this.model = {};
 	this.i18n = {};
-	this.conf = {};
+	this.config = {};
 	this.template = '';
 	this.html = '';
 	this.controller = null;
@@ -30,13 +30,13 @@ Module.prototype = {
 	},
 	setModelAndConfigFromMethod:function(methodName,cb){
 		var that = this;
-		this.method(methodName,function(err,model,config){
+		this.method(methodName,function(err,res){
 			if(!err){
-				that.model = model || that.model;
-				that.config = config || that.config;
+				that.model = res.model || that.model;
+				that.config = res.config || that.config;
 				cb(null,that);
 			}else{
-				cb({error:'SOMETHING_WRONG_WITH_METHOD'})
+				cb(err)
 			}
 		})
 	}
