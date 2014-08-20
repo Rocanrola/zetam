@@ -13,6 +13,7 @@ exports.get = function (req,res,next) {
 
 		if(controller && (methodName in controller)){
 			var methodParams = req.query.jsonString ? JSON.parse(req.query.jsonString) : req.query;
+			methodParams.config = req.config;
 			controller[methodName].call(controller,methodParams,function(error,response){
 				res.json({err:error,res:response});
 			});
