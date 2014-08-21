@@ -1,6 +1,9 @@
-exports.get = function (conf,cb) {
+exports.get = function (conf,req,cb) {
 	cb(null,{
-		componentName:conf.resource.id
+		model:{
+			componentName:req.resource.id,
+			componentAttrs:queryToAttrs(req.query)
+		}
 	});
 }
 

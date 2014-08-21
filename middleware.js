@@ -3,16 +3,12 @@ var utils = require('./utils');
 
 module.exports = function (req,res,next) {
 	req.resource = utils.pathNameToresource(req._parsedUrl.pathname);
+	
 	router(req,res,next);	
 }
 
 var router = function(req,res,next){
-	var config = {}
 	
-	config.globals = req.config || {};
-	config.globals.resource = req.resource;
-	config.globals.cookies = req.cookies || {};
-	config.globals.query = req.query || {};
 
 	var pageName = req.resource.name || 'index';
 	var methodName = req.method.toLowerCase() || 'get';
@@ -22,7 +18,7 @@ var router = function(req,res,next){
 	if(controller && (methodName in controller)){
 		controller[methodName].call(controller,req,res,next);
 	}else{
-		load.page(pageName, methodName, config, function(err,page){
+		load.page(pageName, methodName, req.config, req, function(err,page){
 			if(!err){
 				res.end(utils.minifyHTML(page.html));
 			}else if(err.redirect){
