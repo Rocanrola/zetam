@@ -44,8 +44,10 @@ exports.page = function(name,methodName,args,req,cb){
 
 exports.component = function(name,methodName,args,req,cb){
 	var that = this;
+		
 		args = args || {};
 		args.moduleName = name;
+		
 		methodName = methodName || 'init';
 
 	var componentPath = (name.search('/') != -1) ? name : this.resolve('components/'+name);
