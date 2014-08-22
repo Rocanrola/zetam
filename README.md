@@ -50,6 +50,19 @@ Create at least the controller and the template files and browse:
 
 http://localhost:3000/myFirstPage
 
+Page files structure:
+
+ - projectDir
+	 - pages
+		 - myFirstPage
+			 - controller.js
+			 - template.html
+			 - i18n.json
+			 - view.js
+			 - styles.less
+
+projectDir
+
 Components
 ----------
 Components are loaded using an HTML tag inside any page template with the **data-component** attribute.
@@ -59,6 +72,14 @@ Components are loaded using an HTML tag inside any page template with the **data
 <h1>A title</h1>
 <div data-component="coolComponent" data-lastname="Smith"></div>
 ```
+ - projectDir
+	 - components
+		 - coolComponent
+			 - controller.js
+			 - template.html
+			 - i18n.json
+			 - view.js
+			 - styles.less
 
 Controllers
 ----------
@@ -66,6 +87,8 @@ Controllers
 Pages and components has controllers to set the model to be passed to the template. In the case of Pages the method to be executed is the http verb used to request the page.
 
 Example: If the request is a POST request to http://localhost:3000/myFirstPage the way to handle this is:
+
+Page:
 
 ```js
 // projectDir/pages/myFirstPage/controller.js
@@ -82,6 +105,7 @@ exports.post = function(config,req,cb){
 
 In the case of components included by a HTML tag, the method is always **init** method.
 
+Component:
 ```js
 // projectDir/components/coolComponent/controller.js
 
