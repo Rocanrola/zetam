@@ -30,7 +30,7 @@ var express = require('express');
 var app = express();
 var z = require('zetam');
 
-app.use(express.static(__dirname + '/public', { maxAge: oneDay }));
+app.use(express.static(__dirname + '/public'));
 
 // the potato
 app.use(z.middleware);
@@ -61,7 +61,6 @@ Page files structure:
 			 - view.js
 			 - styles.less
 
-projectDir
 
 Components
 ----------
@@ -72,6 +71,9 @@ Components are loaded using an HTML tag inside any page template with the **data
 <h1>A title</h1>
 <div data-component="coolComponent" data-lastname="Smith"></div>
 ```
+
+Components files structure:
+
  - projectDir
 	 - components
 		 - coolComponent
@@ -81,7 +83,7 @@ Components are loaded using an HTML tag inside any page template with the **data
 			 - view.js
 			 - styles.less
 
-Controllers
+Controllers (controller.js)
 ----------
 
 Pages and components has controllers to set the model to be passed to the template. In the case of Pages the method to be executed is the http verb used to request the page.
@@ -120,7 +122,7 @@ exports.init = function(config,req,cb){
 
 ```
 
-Templates
+Templates (template.html)
 ---------
 Receives the model and the config objects from the controller. Also receives the i18n object.
 ```html
