@@ -9,6 +9,22 @@ Install
 npm install zetam
 ```
 
+YO Generator
+----------
+To start a basic project use the Yeoman generator: https://www.npmjs.org/package/generator-zetam
+
+
+```sh
+# install yeoman
+npm install -g yo
+
+# install zetam generator
+npm install -g generator-zetam
+
+# init a new project
+yo zetam
+```
+
 Pages & Components
 ----------
 Pages and components are pretty the same thing. The main difference is the use. Pages are better for layouts with just few logic. In the other hand, components are very useful for complex and reusable logic pieces ("widgets"). Both have the same structure:
