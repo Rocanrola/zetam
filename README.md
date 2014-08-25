@@ -15,14 +15,14 @@ To start a basic project use the Yeoman generator: https://www.npmjs.org/package
 
 
 ```sh
-# install yeoman
-npm install -g yo
-
-# install zetam generator
-npm install -g generator-zetam
+# install yeoman, zetam generator and gulp globally
+npm install -g yo generator-zetam gulp
 
 # init a new project
 yo zetam
+
+# run gulp
+gulp
 ```
 
 Pages & Components
