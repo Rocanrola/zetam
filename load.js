@@ -17,8 +17,9 @@ exports.controller = function (name) {
 	}
 }
 
-exports.page = function(name,methodName,args,cb){
+exports.page = function(name,methodName,args,req,cb){
 	var that = this;
+
 		args = args || {};
 		args.moduleName = name;
 		methodName = methodName || 'get';
@@ -26,9 +27,8 @@ exports.page = function(name,methodName,args,cb){
 	var pagePath = (name.search('/') != -1) ? name : this.resolve('pages/'+name);
 	
 	if(pagePath){
-
 		var page = new Page();
-		this.moduleResourcesAndRender(page,pagePath,methodName,args,function(err){
+		this.moduleResourcesAndRender(page,pagePath,methodName,args,req,function(err){
 			if(!err){
 				page.renderComponentTags(function(err){
 					cb.call(page,null,page);
@@ -42,10 +42,12 @@ exports.page = function(name,methodName,args,cb){
 	}
 }
 
-exports.component = function(name,methodName,args,cb){
+exports.component = function(name,methodName,args,req,cb){
 	var that = this;
+		
 		args = args || {};
 		args.moduleName = name;
+		
 		methodName = methodName || 'init';
 
 	var componentPath = (name.search('/') != -1) ? name : this.resolve('components/'+name);
@@ -53,7 +55,7 @@ exports.component = function(name,methodName,args,cb){
 	if(componentPath){
 		var component = new Component();
 
-		this.moduleResourcesAndRender(component,componentPath,methodName,args,function(err){
+		this.moduleResourcesAndRender(component,componentPath,methodName,args,req,function(err){
 			if(!err){
 				cb.call(component,null,component);	
 			}else{
@@ -66,16 +68,17 @@ exports.component = function(name,methodName,args,cb){
 	}
 }
 
-exports.moduleResourcesAndRender = function(module,modulePath,methodName,args,cb){
+exports.moduleResourcesAndRender = function(module,modulePath,methodName,args,req,cb){
 	var that = this;
 
 	module.config = utils.cloneObject(args);
+	module.req = req;
 	module.controller = this.moduleController(modulePath);
 
 	module.setModelAndConfigFromMethod(methodName,function(err){
 		if(!err){
-			module.i18n = that.moduleI18n(modulePath,module.config.locale);
-			module.template = that.moduleTemplate(modulePath,module.config['data-template']);
+			module.i18n = that.moduleI18n(modulePath,module.req.config.locale);
+			module.template = module.config['data-template-string'] || that.moduleTemplate(modulePath,module.config['data-template']);
 			module.render(function(){
 				cb.call(module,null,module);
 			});

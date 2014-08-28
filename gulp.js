@@ -42,7 +42,7 @@ module.exports = function(gulp,conf) {
     })
 
     gulp.task('less-pages', function() {
-        return gulp.src(addEach(pagesPaths,'/**/bundle.less'))
+        return gulp.src(addEach(pagesPaths,'/**/styles.less'))
             .pipe($.plumber())
             .pipe($.less())
             .pipe($.prefix("last 1 version", "> 1%", "ie 8", "ie 7"))

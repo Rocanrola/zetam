@@ -24,9 +24,8 @@ Page.prototype.renderComponentTags = function(cb){
 	    var componentName = componentElement.data('component');
 		
 		var componentArgs = utils.cloneObject(componentElement.attr());
-			componentArgs.config = that.config || {};
 
-	    load.component(componentName,'init',componentArgs,function(err,component){
+	    load.component(componentName,'init',componentArgs,that.req,function(err,component){
 	    	if(!err){
 	    		componentElement.html(component.html);
 	    	}
