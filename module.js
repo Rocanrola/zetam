@@ -1,6 +1,8 @@
 var path = require('path');
 var fs = require('fs');
 var mustache = require('mustache');
+var utils = require('./utils');
+
 
 var Module = function (name) {
 	this.model = {};
@@ -34,7 +36,7 @@ Module.prototype = {
 		this.method(methodName,function(err,res){
 			if(!err){
 				that.model = res.model || that.model;
-				that.config = res.config || that.config;
+				that.config = utils.mergeObjects(that.config,res.config)
 				cb(null,that);
 			}else{
 				cb(err)

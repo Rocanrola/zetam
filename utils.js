@@ -49,6 +49,20 @@ exports.mergei18n = function(source,locale){
     return merged;
 }
 
+exports.mergeObjects = function(target,source){
+	merged = {}
+	
+	for(var i in target){
+        merged[i] = target[i];
+    }
+
+	for(var i in source){
+        merged[i] = source[i];
+    }
+    
+    return merged;
+}
+
 exports.loadZetaModule = function(conf,cb){
 	var basePath = conf.basePath;
 	var methodName = conf.methodName;

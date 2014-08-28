@@ -9,6 +9,22 @@ Install
 npm install zetam
 ```
 
+YO Generator
+----------
+To start a basic project use the Yeoman generator: https://www.npmjs.org/package/generator-zetam
+
+
+```sh
+# install yeoman, zetam generator and gulp globally
+npm install -g yo generator-zetam gulp
+
+# init a new project
+yo zetam
+
+# run gulp
+gulp
+```
+
 Pages & Components
 ----------
 Pages and components are pretty the same thing. The main difference is the use. Pages are better for layouts with just few logic. In the other hand, components are very useful for complex and reusable logic pieces ("widgets"). Both have the same structure:
@@ -30,7 +46,7 @@ var express = require('express');
 var app = express();
 var z = require('zetam');
 
-app.use(express.static(__dirname + '/public', { maxAge: oneDay }));
+app.use(express.static(__dirname + '/public'));
 
 // the potato
 app.use(z.middleware);
@@ -50,6 +66,18 @@ Create at least the controller and the template files and browse:
 
 http://localhost:3000/myFirstPage
 
+Page files structure:
+
+ - projectDir
+	 - pages
+		 - myFirstPage
+			 - controller.js
+			 - template.html
+			 - i18n.json
+			 - view.js
+			 - styles.less
+
+
 Components
 ----------
 Components are loaded using an HTML tag inside any page template with the **data-component** attribute.
@@ -60,12 +88,25 @@ Components are loaded using an HTML tag inside any page template with the **data
 <div data-component="coolComponent" data-lastname="Smith"></div>
 ```
 
-Controllers
+Components files structure:
+
+ - projectDir
+	 - components
+		 - coolComponent
+			 - controller.js
+			 - template.html
+			 - i18n.json
+			 - view.js
+			 - styles.less
+
+Controllers (controller.js)
 ----------
 
 Pages and components has controllers to set the model to be passed to the template. In the case of Pages the method to be executed is the http verb used to request the page.
 
 Example: If the request is a POST request to http://localhost:3000/myFirstPage the way to handle this is:
+
+Page:
 
 ```js
 // projectDir/pages/myFirstPage/controller.js
@@ -82,6 +123,7 @@ exports.post = function(config,req,cb){
 
 In the case of components included by a HTML tag, the method is always **init** method.
 
+Component:
 ```js
 // projectDir/components/coolComponent/controller.js
 
@@ -96,7 +138,7 @@ exports.init = function(config,req,cb){
 
 ```
 
-Templates
+Templates (template.html)
 ---------
 Receives the model and the config objects from the controller. Also receives the i18n object.
 ```html
