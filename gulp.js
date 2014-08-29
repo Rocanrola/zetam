@@ -1,6 +1,8 @@
 var z = require('./');
 var path = require('path');
 var livereload = require('gulp-livereload');
+var browserify = require('browserify');
+var transform = require('vinyl-transform');
 var componentPaths;
 
 var $ = {
@@ -8,8 +10,7 @@ var $ = {
     plumber:require('gulp-plumber'),
     less:require('gulp-less'),
     prefix:require('gulp-autoprefixer'),
-    rename:require('gulp-rename'),
-    browserify:require('gulp-browserify')
+    rename:require('gulp-rename')
 }
 
 var addEach = function(arr,add){
@@ -63,9 +64,14 @@ module.exports = function(gulp,conf) {
     // Browserify
 
     gulp.task('browserify-components', function() {
+        var browserified = transform(function(filename) {
+            var b = browserify(filename);
+            return b.bundle();
+        });
+
         return gulp.src(addEach(componentPaths,'/**/view.js'))
             .pipe($.plumber())
-            .pipe($.browserify())
+            .pipe(browserified)
             .pipe($.rename(function(path) {
                 path.basename = path.dirname;
                 path.dirname = '';
@@ -74,9 +80,16 @@ module.exports = function(gulp,conf) {
     })
 
     gulp.task('browserify-pages', function() {
+
+        var browserified = transform(function(filename) {
+            var b = browserify(filename);
+            return b.bundle();
+        });
+
+
         return gulp.src(addEach(pagesPaths,'/**/view.js'))
             .pipe($.plumber())
-            .pipe($.browserify())
+            .pipe(browserified)
             .pipe($.rename(function(path) {
                 path.basename = path.dirname;
                 path.dirname = '';
