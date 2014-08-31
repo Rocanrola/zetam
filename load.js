@@ -77,8 +77,8 @@ exports.moduleResourcesAndRender = function(module,modulePath,methodName,args,re
 
 	module.setModelAndConfigFromMethod(methodName,function(err){
 		if(!err){
-			module.i18n = that.moduleI18n(modulePath,module.config.locale);
-			module.template = that.moduleTemplate(modulePath,module.config['data-template']);
+			module.i18n = that.moduleI18n(modulePath,module.req.config.locale);
+			module.template = module.config['data-template-string'] || that.moduleTemplate(modulePath,module.config['data-template']);
 			module.render(function(){
 				cb.call(module,null,module);
 			});
