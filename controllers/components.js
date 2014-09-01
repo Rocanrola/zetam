@@ -2,7 +2,7 @@ var load = require('../load');
 var fs = require('fs');
 var path = require('path');
 
-exports.get = function (req,res,next) {
+exports.init = function (req,res,next) {
 
 	if(req.resource.subresource && req.resource.subresource.name == 'method' && req.resource.subresource.id){
 		
