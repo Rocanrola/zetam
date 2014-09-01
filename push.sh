@@ -1,6 +1,3 @@
-npm version patch
-npm publish
-
 MSSG=""
 
 if [ -z "$1" ] 
@@ -13,3 +10,6 @@ fi
 git add .
 git commit -am "$MSSG"
 git push origin master
+
+npm version patch
+npm publish
