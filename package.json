@@ -1,7 +1,7 @@
 {
   "name": "zetam",
   "description": "(In progress)",
-  "version": "0.2.51",
+  "version": "0.2.53",
   "engines": {
     "node": ">0.10.1"
   },
@@ -34,7 +34,8 @@
     "gulp-rename": "^1.2.0",
     "gulp-watch": "^0.6.8",
     "html-minifier": "^0.6.5",
-    "mustache": "^0.8.2"
+    "mustache": "^0.8.2",
+    "vinyl-transform": "0.0.1"
   },
   "readmeFilename": "README.md"
 }

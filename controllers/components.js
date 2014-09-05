@@ -2,7 +2,7 @@ var load = require('../load');
 var fs = require('fs');
 var path = require('path');
 
-exports.get = function (req,res,next) {
+exports.init = function (req,res,next) {
 
 	if(req.resource.subresource && req.resource.subresource.name == 'method' && req.resource.subresource.id){
 		
@@ -17,7 +17,7 @@ exports.get = function (req,res,next) {
 				res.json({err:error,res:response});
 			});
 		}else{
-			res.send(404);
+			res.status(404).end();
 		}
 
 	}else if(req.resource.id){
@@ -32,7 +32,7 @@ exports.get = function (req,res,next) {
 		}else{
 			load.component(req.resource.id,'init',req.query,req,function(err,component){
 				if(err){
-					res.send(404);
+					res.status(404).end();
 				}else{
 					res.send(component.html);
 				}
