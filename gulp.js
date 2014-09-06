@@ -13,6 +13,12 @@ var $ = {
     rename:require('gulp-rename')
 }
 
+var plumberOption = {
+    errorHandler:function(e){
+        console.log(e);
+    }
+}
+
 var addEach = function(arr,add){
     var newArr = arr.slice(0);
 
@@ -32,7 +38,7 @@ module.exports = function(gulp,conf) {
 
     gulp.task('less-components', function() {
         return gulp.src(addEach(componentPaths,'/**/styles.less'))
-            .pipe($.plumber())
+            .pipe($.plumber(plumberOption))
             .pipe($.less())
             .pipe($.prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
             .pipe($.rename(function(path) {
@@ -44,7 +50,7 @@ module.exports = function(gulp,conf) {
 
     gulp.task('less-pages', function() {
         return gulp.src(addEach(pagesPaths,'/**/styles.less'))
-            .pipe($.plumber())
+            .pipe($.plumber(plumberOption))
             .pipe($.less())
             .pipe($.prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
             .pipe($.rename(function(path) {
@@ -70,7 +76,7 @@ module.exports = function(gulp,conf) {
         });
 
         return gulp.src(addEach(componentPaths,'/**/view.js'))
-            .pipe($.plumber())
+            .pipe($.plumber(plumberOption))
             .pipe(browserified)
             .pipe($.rename(function(path) {
                 path.basename = path.dirname;
@@ -88,7 +94,7 @@ module.exports = function(gulp,conf) {
 
 
         return gulp.src(addEach(pagesPaths,'/**/view.js'))
-            .pipe($.plumber())
+            .pipe($.plumber(plumberOption))
             .pipe(browserified)
             .pipe($.rename(function(path) {
                 path.basename = path.dirname;
