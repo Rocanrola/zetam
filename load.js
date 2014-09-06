@@ -3,6 +3,8 @@ var fs = require('fs');
 var Page = require('./page');
 var Component = require('./component');
 var utils = require('./utils');
+var $ = require('cheerio');
+var async = require('async');
 
 var basePaths = [path.resolve(path.dirname(require.main.filename))];
 var allPaths = basePaths;
@@ -30,8 +32,8 @@ exports.page = function(name,methodName,args,req,cb){
 		var page = new Page();
 		this.moduleResourcesAndRender(page,pagePath,methodName,args,req,function(err){
 			if(!err){
-				page.renderComponentTags(function(err){
-					cb.call(page,null,page);
+				that.renderComponentTags(page,function(err,newPage){
+					cb.call(newPage,null,newPage);
 				})	
 			}else{
 				cb(err);
@@ -57,7 +59,9 @@ exports.component = function(name,methodName,args,req,cb){
 
 		this.moduleResourcesAndRender(component,componentPath,methodName,args,req,function(err){
 			if(!err){
-				cb.call(component,null,component);	
+				that.renderComponentTags(component,function(err,newComponent){
+					cb.call(newComponent,null,newComponent);
+				})
 			}else{
 				cb(err);
 			}
@@ -130,6 +134,31 @@ exports.resolve = function(item){
 	};
 
 	return false;
+}
+
+exports.renderComponentTags = function(module,cb){
+	var that = this;
+
+	var pageDom = $.load(module.html);
+    var componentTags = pageDom("[data-component]");
+
+
+    async.forEach(componentTags, function(elem, callback) {
+        var componentElement = $(elem);
+	    var componentName = componentElement.data('component');
+		
+		var componentArgs = utils.cloneObject(componentElement.attr());
+
+	    that.component(componentName,'init',componentArgs,module.req,function(err,component){
+	    	if(!err){
+	    		componentElement.html(component.html);
+	    	}
+	    	callback();
+	    })
+    }, function(err) {
+    	module.html = pageDom.html();
+        cb(null,module);
+    });
 }
 
 exports.paths = function(newPaths){
