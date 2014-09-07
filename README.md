@@ -31,7 +31,7 @@ Pages and components are pretty the same thing. The main difference is the use. 
 
  - **controller.js** Server side logic. Defines the model to be passed to the template
  - **template.html** Mustache template, receives model, i18n and config objects
- - **i18n.json** 
+ - **i18n.json** it's passed to the template like a **i18n** object
  - **view.js** Client side logic (Common JS module by Browserify - http://browserify.org/)
  - **styles.less** CSS styles by less
 
@@ -58,7 +58,7 @@ app.listen(3000,function () {
 
 Pages
 ----------
-Pages are automatically loaded by zetam middleware. Just create a page folder inside the **pages** directory.
+Pages are controllers too. These are automatically loaded by zetam middleware. Just create a page folder inside the **pages** directory.
 
 	projectDir > pages > myFirstPage
 
@@ -80,7 +80,7 @@ Page files structure:
 
 Components
 ----------
-Components are loaded using an HTML tag inside any page template with the **data-component** attribute.
+Components are loaded using an HTML tag inside any template with the **data-component** attribute.
 
 ```html
 <!-- projectDir/pages/myFirstPage/template.html -->
@@ -137,6 +137,26 @@ exports.init = function(config,req,cb){
 }
 
 ```
+Components can also send a second parameter in order to override some config options, for example: the template name.
+
+```js
+// projectDir/components/coolComponent/controller.js
+
+exports.init = function(config,req,cb){
+	cb(null,{
+		model:{
+			name:'John',
+			lastname:config['data-lastname']
+		},
+		config:{
+			'data-template':'otherTemplate'
+		}
+	});
+}
+
+```
+
+This tells zetam use **otherTemplate.html** instead the default **template.html** file inside the component directory.
 
 Templates (template.html)
 ---------
