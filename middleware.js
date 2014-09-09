@@ -25,7 +25,8 @@ var router = function(req,res,next){
 				res.redirect(err.redirect.code || 301, err.redirect.url);
 			}else{
 				// console.error(err);
-				res.status(404).end();
+				// res.status(404).end();
+				next();
 			}
 		});
 	}
