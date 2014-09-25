@@ -38,7 +38,7 @@ module.exports = function(gulp,conf) {
     var pagesPaths = ['./pages'].concat(addEach(conf.paths,'/pages'));
 
     gulp.task('less-components', function() {
-        return gulp.src(addEach(componentPaths,'/**/styles.less'), { read: false })
+        return gulp.src(addEach(componentPaths,'/**/styles.less'))
             .pipe($.watch())
             .pipe($.plumber(plumberOption))
             .pipe($.less())
@@ -52,7 +52,7 @@ module.exports = function(gulp,conf) {
     })
 
     gulp.task('less-pages', function() {
-        return gulp.src(addEach(pagesPaths,'/**/styles.less'), { read: false })
+        return gulp.src(addEach(pagesPaths,'/**/styles.less'))
             .pipe($.watch())
             .pipe($.plumber(plumberOption))
             .pipe($.less())
