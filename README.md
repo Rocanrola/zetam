@@ -42,6 +42,7 @@ Middleware
 In order to use zetam, just plug the middleware into your Express project (http://expressjs.com/)
 
 ```js
+// projectDir/app.js
 var express = require('express');
 var app = express();
 var z = require('zetam');
@@ -158,17 +159,59 @@ exports.init = function(config,req,cb){
 
 This tells zetam use **otherTemplate.html** instead the default **template.html** file inside the component directory.
 
+
+i18n (i18n.json)
+---------
+i18n.json file works with components and pages in the same way. In order to use it it's necesary set a **req.config.locale** variable before middleware loads. 
+
+```js
+// projectDir/app.js
+var express = require('express');
+var app = express();
+var z = require('zetam');
+
+app.use(express.static(__dirname + '/public'));
+
+// the potato
+app.use(function(req,res,next){
+	req.config = { locale:'ar'}
+	next();
+});
+
+app.use(z.middleware);
+
+app.listen(3000,function () {
+	console.log('running on port ' + port);
+});
+```
+Inside the i18n.json file there would be to exist at least the **all**  object, it will be merged with the current locale object.
+
+```js
+// projectDir/components/coolComponent/i18n.json
+
+{
+	"all":{
+		"greeting": "Hi there",
+		"goodbay": "Come back !"
+	},
+	"ar":{
+		"greetings": "Hola, como estas?"
+	}
+}
+
+```
+
 Templates (template.html)
 ---------
 Receives the model and the config objects from the controller. Also receives the i18n object.
 ```html
 <!-- projectDir/pages/myFirstPage/template.html -->
-<h1>Hi my name is {{model.name}}</h1>
+<h1>{{i18n.greeting}} my name is {{model.name}}</h1>
 
 <span>If this would be a component, this would be the component name: {{config.data-template}} and this would be a the data-lastname attribute of the component tag {{config.data-lastname}}</span>
+
+{{i18n.goodbay}}
 ```
-
-
 
 Gulp
 ----------
@@ -183,3 +226,20 @@ z.gulp(gulp);
 
 gulp.task('default', ['zetam']);
 ```
+
+Main Controllers (Alternative to Pages)
+---------
+
+There is a more basic way to handle URLs: Main controllers
+
+Example: If the request is a GET request to http://localhost:3000/superCoolController the way to handle this is:
+
+```js
+// projectDir/controllers/superCoolController.js
+
+exports.get = function(req,res,next){
+	res.json({hi:"world"});
+}
+
+```
+It's basically is a middleware for an specific URL. If would be a Main controller and a Page with the same name , the controller will be loaded.
