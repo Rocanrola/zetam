@@ -6,6 +6,7 @@ var transform = require('vinyl-transform');
 var componentPaths;
 
 var $ = {
+    watch:require('gulp-watch'),
     nodemon:require('gulp-nodemon'),
     plumber:require('gulp-plumber'),
     less:require('gulp-less'),
@@ -38,6 +39,7 @@ module.exports = function(gulp,conf) {
 
     gulp.task('less-components', function() {
         return gulp.src(addEach(componentPaths,'/**/styles.less'))
+            .pipe($.watch())
             .pipe($.plumber(plumberOption))
             .pipe($.less())
             .pipe($.prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
@@ -45,11 +47,13 @@ module.exports = function(gulp,conf) {
                 path.basename = path.dirname;
                 path.dirname = '';
             }))
-            .pipe(gulp.dest('./public/css/components/'));
+            .pipe(gulp.dest('./public/css/components/'))
+            .pipe(livereload());
     })
 
     gulp.task('less-pages', function() {
         return gulp.src(addEach(pagesPaths,'/**/styles.less'))
+            .pipe($.watch())
             .pipe($.plumber(plumberOption))
             .pipe($.less())
             .pipe($.prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
@@ -57,15 +61,12 @@ module.exports = function(gulp,conf) {
                 path.basename = path.dirname;
                 path.dirname = '';
             }))
-            .pipe(gulp.dest('./public/css/pages/'));
+            .pipe(gulp.dest('./public/css/pages/'))
+            .pipe(livereload());
     })
 
     gulp.task('less',['less-components','less-pages']);
 
-
-    gulp.task('less-and-autoreload',['less'], function() {
-        livereload.changed({path:'once.css'});
-    });
 
     // Browserify
 
@@ -76,13 +77,15 @@ module.exports = function(gulp,conf) {
         });
 
         return gulp.src(addEach(componentPaths,'/**/view.js'))
+            .pipe($.watch())
             .pipe($.plumber(plumberOption))
             .pipe(browserified)
             .pipe($.rename(function(path) {
                 path.basename = path.dirname;
                 path.dirname = '';
             }))
-            .pipe(gulp.dest('./public/js/components/'));
+            .pipe(gulp.dest('./public/js/components/'))
+            .pipe(livereload({path:'once.js'}));
     })
 
     gulp.task('browserify-pages', function() {
@@ -94,42 +97,25 @@ module.exports = function(gulp,conf) {
 
 
         return gulp.src(addEach(pagesPaths,'/**/view.js'))
+            .pipe($.watch())
             .pipe($.plumber(plumberOption))
             .pipe(browserified)
             .pipe($.rename(function(path) {
                 path.basename = path.dirname;
                 path.dirname = '';
             }))
-            .pipe(gulp.dest('./public/js/pages/'));
+            .pipe(gulp.dest('./public/js/pages/'))
+            .pipe(livereload({path:'once.js'}));
     })
 
     gulp.task('browserify',['browserify-components','browserify-pages']);
 
-    gulp.task('browserify-and-autoreload',['browserify'], function() {
-        livereload.changed({path:'once.js'});
-    });
-
-    // Watch
-
-    gulp.task('watch', function() {
-        var lessPaths = addEach(componentPaths,'/**/*.less')
-                        .concat(addEach(pagesPaths,'/**/*.less'))
-                        .concat(['./less/**/*.less']);
-
-        // jsCs == Javascript Clien Side
-        var jsCsPaths = addEach(componentPaths,'/**/view.js')
-                        .concat(addEach(pagesPaths,'/**/view.js'))
-                        .concat(['./scripts/**/*.js']);
-
-        var templatesPaths = addEach(componentPaths,'/**/*.html')
-                            .concat(addEach(pagesPaths,'/**/*.html'));
-
-        gulp.watch(lessPaths, ['less-and-autoreload']);
-        gulp.watch(jsCsPaths, ['browserify-and-autoreload']);
-        gulp.watch(templatesPaths).on('change', livereload.changed);
-    });
 
     // Livereload
+    var templatesPaths = addEach(componentPaths,'/**/*.html')
+        .concat(addEach(pagesPaths,'/**/*.html'));
+
+    gulp.watch(templatesPaths).on('change', livereload.changed);
 
     gulp.task('livereload',function(){
         livereload.listen();
@@ -152,7 +138,7 @@ module.exports = function(gulp,conf) {
         });
     });
 
-    gulp.task('zetam', ['livereload','browserify','less','watch','server']);
+    gulp.task('zetam', ['livereload','browserify','less','server']);
     gulp.task('zetam-build', ['browserify','less']);
 
 }
