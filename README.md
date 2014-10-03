@@ -78,6 +78,10 @@ Page files structure:
 			 - view.js
 			 - styles.less
 
+Pages can be created running a yeoman command:
+```sh
+yo zetam:page
+```
 
 Components
 ----------
