@@ -100,6 +100,11 @@ Components files structure:
 			 - view.js
 			 - styles.less
 
+it's possible create a new component running a yeoman command:
+```sh
+yo zetam:component
+```
+
 Controllers (controller.js)
 ----------
 
