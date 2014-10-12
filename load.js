@@ -6,8 +6,18 @@ var utils = require('./utils');
 var $ = require('cheerio');
 var async = require('async');
 
+var templateCacheEnable = false;
+var templatesCache = {}
+
 var basePaths = [path.resolve(path.dirname(require.main.filename))];
 var allPaths = basePaths;
+var objectSize = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
 
 exports.controller = function (name) {
 	var controllerPath = this.resolve('controllers/'+name+'.js');
@@ -114,10 +124,17 @@ exports.moduleI18n = function(modulePath,locale){
 
 exports.moduleTemplate = function(modulePath, templateName){
 	templateName = templateName || 'template';
-
+	var templateCode;
 	var templatePath = path.resolve(modulePath,templateName + '.html');
+
+	if(templateCacheEnable && templatesCache[templatePath]){
+		return templatesCache[templatePath];
+	}
+
 	if(fs.existsSync(templatePath)){
-		return fs.readFileSync(templatePath).toString();
+		templateCode = fs.readFileSync(templatePath).toString();
+		templatesCache[templatePath] = templateCode;
+		return templateCode;
 	}else{
 		return null;
 	}
@@ -160,6 +177,11 @@ exports.renderComponentTags = function(module,cb){
         cb(null,module);
     });
 }
+
+exports.enableTemplateCache = function(){
+	templateCacheEnable = true;
+}
+
 
 exports.paths = function(newPaths){
 	if(newPaths){
