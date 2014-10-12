@@ -236,6 +236,22 @@ z.gulp(gulp);
 gulp.task('default', ['zetam']);
 ```
 
+After this several task are available, the default task ('zetam') is for development, it compiles an watch.
+
+The is also **zetam-build**, this doesn't watch and minifies/uglifies everything.
+
+```sh
+# for dev
+gulp 
+```
+
+
+```sh
+# for prod
+gulp zetam-build
+```
+
+
 Main Controllers (Alternative to Pages)
 ---------
 

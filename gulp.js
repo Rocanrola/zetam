@@ -11,7 +11,9 @@ var $ = {
     plumber:require('gulp-plumber'),
     less:require('gulp-less'),
     prefix:require('gulp-autoprefixer'),
-    rename:require('gulp-rename')
+    rename:require('gulp-rename'),
+    minifyCSS:require('gulp-minify-css'),
+    uglify:require('gulp-uglify')
 }
 
 var plumberOption = {
@@ -111,11 +113,90 @@ module.exports = function(gulp,conf) {
     gulp.task('browserify',['browserify-components','browserify-pages']);
 
 
+    //////////////////
+    //////////////////
+    //////////////////
+    ////////////////// Build
+    
+    gulp.task('build-less-components', function() {
+        return gulp.src(addEach(componentPaths,'/**/styles.less'))
+            .pipe($.less())
+            .pipe($.prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
+            .pipe($.rename(function(path) {
+                path.basename = path.dirname;
+                path.dirname = '';
+            }))
+            .pipe($.minifyCSS({keepBreaks:true}))
+            .pipe(gulp.dest('./public/css/components/'));
+    })
+
+    gulp.task('build-less-pages', function() {
+        return gulp.src(addEach(pagesPaths,'/**/styles.less'))
+            .pipe($.less())
+            .pipe($.prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
+            .pipe($.rename(function(path) {
+                path.basename = path.dirname;
+                path.dirname = '';
+            }))
+            .pipe($.minifyCSS({keepBreaks:true}))
+            .pipe(gulp.dest('./public/css/pages/'));
+    })
+
+    gulp.task('build-less',['build-less-components','build-less-pages']);
+
+
+    // Browserify
+
+    gulp.task('build-browserify-components', function() {
+        var browserified = transform(function(filename) {
+            var b = browserify(filename);
+            return b.bundle();
+        });
+
+        return gulp.src(addEach(componentPaths,'/**/view.js'))
+            .pipe(browserified)
+            .pipe($.rename(function(path) {
+                path.basename = path.dirname;
+                path.dirname = '';
+            }))
+            .pipe($.uglify())
+            .pipe(gulp.dest('./public/js/components/'));
+    })
+
+    gulp.task('build-browserify-pages', function() {
+
+        var browserified = transform(function(filename) {
+            var b = browserify(filename);
+            return b.bundle();
+        });
+
+
+        return gulp.src(addEach(pagesPaths,'/**/view.js'))
+            .pipe(browserified)
+            .pipe($.rename(function(path) {
+                path.basename = path.dirname;
+                path.dirname = '';
+            }))
+            .pipe($.uglify())
+            .pipe(gulp.dest('./public/js/pages/'));
+    })
+
+    gulp.task('build-browserify',['build-browserify-components','build-browserify-pages']);
+
+    //////////////////
+    //////////////////
+    //////////////////
+    //////////////////
+    //////////////////
+
+
     // Livereload
     var templatesPaths = addEach(componentPaths,'/**/*.html')
         .concat(addEach(pagesPaths,'/**/*.html'));
 
-    gulp.watch(templatesPaths).on('change', livereload.changed);
+    gulp.task('templates',function(){
+        gulp.watch(templatesPaths).on('change', livereload.changed);
+    });
 
     gulp.task('livereload',function(){
         livereload.listen();
@@ -138,7 +219,7 @@ module.exports = function(gulp,conf) {
         });
     });
 
-    gulp.task('zetam', ['livereload','browserify','less','server']);
-    gulp.task('zetam-build', ['browserify','less']);
+    gulp.task('zetam', ['livereload','browserify','less','templates','server']);
+    gulp.task('zetam-build',['build-browserify','build-less']);
 
 }
