@@ -1,3 +1,12 @@
+/*
+Important:
+
+Option read:false prevents gulp from reading the contents 
+of the file and makes this task a lot faster.
+https://www.npmjs.org/package/gulp-clean
+
+*/
+
 var z = require('./');
 var path = require('path');
 var livereload = require('gulp-livereload');
@@ -40,7 +49,7 @@ module.exports = function(gulp,conf) {
     var pagesPaths = ['./pages'].concat(addEach(conf.paths,'/pages'));
 
     gulp.task('less-components', function() {
-        return gulp.src(addEach(componentPaths,'/**/styles.less'))
+        return gulp.src(addEach(componentPaths,'/**/styles.less'), {read: false})
             .pipe($.watch())
             .pipe($.plumber(plumberOption))
             .pipe($.less())
@@ -54,7 +63,7 @@ module.exports = function(gulp,conf) {
     })
 
     gulp.task('less-pages', function() {
-        return gulp.src(addEach(pagesPaths,'/**/styles.less'))
+        return gulp.src(addEach(pagesPaths,'/**/styles.less'), {read: false})
             .pipe($.watch())
             .pipe($.plumber(plumberOption))
             .pipe($.less())
@@ -78,7 +87,7 @@ module.exports = function(gulp,conf) {
             return b.bundle();
         });
 
-        return gulp.src(addEach(componentPaths,'/**/view.js'))
+        return gulp.src(addEach(componentPaths,'/**/view.js'), {read: false})
             .pipe($.watch())
             .pipe($.plumber(plumberOption))
             .pipe(browserified)
@@ -98,7 +107,7 @@ module.exports = function(gulp,conf) {
         });
 
 
-        return gulp.src(addEach(pagesPaths,'/**/view.js'))
+        return gulp.src(addEach(pagesPaths,'/**/view.js'), {read: false})
             .pipe($.watch())
             .pipe($.plumber(plumberOption))
             .pipe(browserified)
@@ -215,7 +224,6 @@ module.exports = function(gulp,conf) {
         })
         .on('restart', function() {
             console.log('express restarted!')
-            livereload.changed();
         });
     });
 
