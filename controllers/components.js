@@ -2,7 +2,7 @@ var load = require('../load');
 var fs = require('fs');
 var path = require('path');
 
-exports.init = function (req,res,next) {
+exports.post = exports.get = function (req,res,next) {
 
 	if(req.resource.subresource && req.resource.subresource.name == 'method' && req.resource.subresource.id){
 		
@@ -20,6 +20,15 @@ exports.init = function (req,res,next) {
 			res.status(404).end();
 		}
 
+	}else if(req.resource.subresource && req.resource.subresource.name == 'template'){
+		var templateName = req.resource.subresource.id || 'template';
+		var componentPath = load.resolve('components/'+req.resource.id);
+		if(componentPath){
+			var template = load.moduleTemplate(componentPath,templateName);
+			res.end(template || '');
+		}else{
+			res.status(404).end();
+		}
 	}else if(req.resource.id){
 
 		if(req.query.preview === 'true'){

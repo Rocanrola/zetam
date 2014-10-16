@@ -27,7 +27,7 @@ exports.minifyHTML = function(html){
 		removeComments:true,
 		collapseWhitespace:true,
 		collapseBooleanAttributes:true,
-		removeAttributeQuotes:true,
+		removeAttributeQuotes:false,
 		useShortDoctype:true,
 		removeEmptyAttributes:true
 	});
