@@ -138,7 +138,7 @@ module.exports = function(gulp,conf) {
         });
     });
 
-    gulp.task('zetam', ['livereload','browserify','less','server']);
+    gulp.task('zetam', ['zetam-build','livereload','browserify','less','server']);
     gulp.task('zetam-build', ['browserify','less']);
 
 }
