@@ -62,8 +62,9 @@ exports.component = function(name,methodName,args,req,cb){
 		
 		methodName = methodName || 'init';
 
-	var componentPath = (name.search('/') != -1) ? name : this.resolve('components/'+name);
-
+	// if start with / is an absolute path
+	var componentPath = /^(\/)/.test(name) ? name : this.resolve('components/'+name);
+	
 	if(componentPath){
 		var component = new Component();
 
