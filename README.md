@@ -116,7 +116,7 @@ Pages and components has controllers to set the model to be passed to the templa
 
 Controllers receive three parameter:
 
- - config: In the case of components, config are all the attributes of the HTML tag , and also receive the inner html content. In the case of pages is basic info about the page 
+ - config: In the case of components, config are all the attributes of the HTML tag , and also receive the inner html content. In the case of pages is req.config +  query parameters
  - req: express request object
  - cb : callback(error,response). The response could be an empty object, or it can has the model to be passed to the template
 
@@ -128,6 +128,7 @@ Page:
 // projectDir/pages/myFirstPage/controller.js
 
 exports.post = function(config,req,cb){
+	// config has basic info + req.config + query string parameters
 	cb(null,{
 		model:{
 			name:'John'
