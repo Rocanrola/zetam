@@ -9,16 +9,17 @@ module.exports = function (req,res,next) {
 
 var router = function(req,res,next){
 	
-
 	var pageName = req.resource.name || 'index';
 	var methodName = req.method.toLowerCase() || 'get';
-
 	var controller = (pageName === 'components') ? require('./controllers/components') : load.controller(pageName);
+	
+	var pageConfig = utils.cloneObject(req.config || {});
+		pageConfig = utils.mergeObjects(pageConfig,req.query);
 	
 	if(controller){
 		controller[methodName].call(controller,req,res,next);
 	}else{
-		load.page(pageName, methodName, req.config, req, function(err,page){
+		load.page(pageName, methodName, pageConfig, req, function(err,page){
 			if(!err){
 				res.end(utils.minifyHTML(page.html));
 			}else if(err.redirect){

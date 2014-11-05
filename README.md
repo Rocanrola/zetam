@@ -114,6 +114,12 @@ Controllers (controller.js)
 
 Pages and components has controllers to set the model to be passed to the template. In the case of Pages the method to be executed is the http verb used to request the page.
 
+Controllers receive three parameter:
+
+ - config: In the case of components, config are all the attributes of the HTML tag , and also receive the inner html content. In the case of pages is basic info about the page 
+ - req: express request object
+ - cb : callback(error,response). The response could be an empty object, or it can has the model to be passed to the template
+
 Example: If the request is a POST request to http://localhost:3000/myFirstPage the way to handle this is:
 
 Page:
@@ -138,6 +144,12 @@ Component:
 // projectDir/components/coolComponent/controller.js
 
 exports.init = function(config,req,cb){
+	// in this case config receive all the attributes
+	// For example, if the tag would be 
+	// <div data-component="coolComponent" data-extra="great"></div>
+	// config would have an data-extra atribute
+	// config also receives an innerHTML attribute
+	
 	cb(null,{
 		model:{
 			name:'John',
