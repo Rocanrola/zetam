@@ -1,7 +1,11 @@
 {
   "name": "zetam",
   "description": "(In progress)",
+<<<<<<< HEAD
+  "version": "0.2.74",
+=======
   "version": "0.2.75",
+>>>>>>> 4b67bd4f874a5c383917f5c57b83015ddb66dcc9
   "engines": {
     "node": ">0.10.1"
   },
