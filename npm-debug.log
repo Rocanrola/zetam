@@ -1,0 +1,140 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@1.4.9
+3 info using node@v0.10.28
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /Users/mzapaia/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-60792-SLF9EEN6/1416256832256-0.973372736480087/tmp.tgz',
+10 verbose tar pack   '.' ]
+11 verbose tarball /var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-60792-SLF9EEN6/1416256832256-0.973372736480087/tmp.tgz
+12 verbose folder .
+13 info prepublish zetam@0.2.77
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /Users/mzapaia/.npm/1f1177db-tar.lock
+16 silly lockFile f4246801-832256-0-973372736480087-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-60792-SLF9EEN6/1416256832256-0.973372736480087/tmp.tgz
+17 verbose lock tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-60792-SLF9EEN6/1416256832256-0.973372736480087/tmp.tgz /Users/mzapaia/.npm/f4246801-832256-0-973372736480087-tmp-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile f4246801-832256-0-973372736480087-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-60792-SLF9EEN6/1416256832256-0.973372736480087/tmp.tgz
+21 silly lockFile f4246801-832256-0-973372736480087-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-60792-SLF9EEN6/1416256832256-0.973372736480087/tmp.tgz
+22 verbose tar unpack /var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-60792-SLF9EEN6/1416256832256-0.973372736480087/tmp.tgz
+23 silly lockFile 7c8c47ce-mzapaia-npm-zetam-0-2-77-package tar:///Users/mzapaia/.npm/zetam/0.2.77/package
+24 verbose lock tar:///Users/mzapaia/.npm/zetam/0.2.77/package /Users/mzapaia/.npm/7c8c47ce-mzapaia-npm-zetam-0-2-77-package.lock
+25 silly lockFile f4246801-832256-0-973372736480087-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-60792-SLF9EEN6/1416256832256-0.973372736480087/tmp.tgz
+26 verbose lock tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-60792-SLF9EEN6/1416256832256-0.973372736480087/tmp.tgz /Users/mzapaia/.npm/f4246801-832256-0-973372736480087-tmp-tgz.lock
+27 silly gunzTarPerm modes [ '755', '644' ]
+28 silly gunzTarPerm extractEntry package.json
+29 silly gunzTarPerm extractEntry .npmignore
+30 silly gunzTarPerm extractEntry README.md
+31 silly gunzTarPerm extractEntry LICENSE
+32 silly gunzTarPerm extractEntry component.js
+33 silly gunzTarPerm extractEntry page.js
+34 silly gunzTarPerm extractEntry gulp.js
+35 silly gunzTarPerm extractEntry index.js
+36 silly gunzTarPerm extractEntry load.js
+37 silly gunzTarPerm extractEntry module.js
+38 silly gunzTarPerm extractEntry utils.js
+39 silly gunzTarPerm extractEntry middleware.js
+40 silly gunzTarPerm extractEntry controllers/components.js
+41 silly gunzTarPerm extractEntry pages/components/controller.js
+42 silly gunzTarPerm extractEntry pages/components/i18n.json
+43 silly gunzTarPerm extractEntry pages/components/template.html
+44 silly gunzTarPerm extractEntry pull.sh
+45 silly gunzTarPerm extractEntry push.sh
+46 silly lockFile 7c8c47ce-mzapaia-npm-zetam-0-2-77-package tar:///Users/mzapaia/.npm/zetam/0.2.77/package
+47 silly lockFile 7c8c47ce-mzapaia-npm-zetam-0-2-77-package tar:///Users/mzapaia/.npm/zetam/0.2.77/package
+48 silly lockFile f4246801-832256-0-973372736480087-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-60792-SLF9EEN6/1416256832256-0.973372736480087/tmp.tgz
+49 silly lockFile f4246801-832256-0-973372736480087-tmp-tgz tar:///var/folders/_j/4v1cfjpd0tx7sv_wr427m8vw0000gn/T/npm-60792-SLF9EEN6/1416256832256-0.973372736480087/tmp.tgz
+50 silly lockFile 3a52ce78- .
+51 silly lockFile 3a52ce78- .
+52 silly publish { name: 'zetam',
+52 silly publish   description: '(In progress)',
+52 silly publish   version: '0.2.77',
+52 silly publish   engines: { node: '>0.10.1' },
+52 silly publish   author: { name: 'Marcelo Zapaia' },
+52 silly publish   repository: { type: 'git', url: 'https://github.com/qzapaia/zetam.git' },
+52 silly publish   keywords: [ 'express', 'web', 'framework', 'zeta' ],
+52 silly publish   main: 'index.js',
+52 silly publish   license: 'ISC',
+52 silly publish   dependencies:
+52 silly publish    { async: '^0.9.0',
+52 silly publish      browserify: '^5.11.0',
+52 silly publish      cheerio: '^0.17.0',
+52 silly publish      gulp: '^3.8.5',
+52 silly publish      'gulp-autoprefixer': '0.0.8',
+52 silly publish      'gulp-less': '^1.2.4',
+52 silly publish      'gulp-livereload': '^2.1.0',
+52 silly publish      'gulp-load-plugins': '^0.5.3',
+52 silly publish      'gulp-minify-css': '^0.3.10',
+52 silly publish      'gulp-nodemon': '^1.0.4',
+52 silly publish      'gulp-plumber': '^0.6.3',
+52 silly publish      'gulp-rename': '^1.2.0',
+52 silly publish      'gulp-uglify': '^1.0.1',
+52 silly publish      'gulp-watch': '^0.6.8',
+52 silly publish      'html-minifier': '^0.6.5',
+52 silly publish      mustache: '^0.8.2',
+52 silly publish      'vinyl-transform': '0.0.1' },
+52 silly publish   readmeFilename: 'README.md',
+52 silly publish   readme: 'Zetam\n-----\nZetam is a middleware for express that makes frontend development easy. It\'s based on two basic concepts: Pages and Components\n\nInstall\n-----------\n\n```sh\nnpm install zetam\n```\n\nYO Generator\n----------\nTo start a basic project use the Yeoman generator: https://www.npmjs.org/package/generator-zetam\n\n\n```sh\n# install yeoman, zetam generator and gulp globally\nnpm install -g yo generator-zetam gulp\n\n# init a new project\nyo zetam\n\n# run gulp\ngulp\n```\n\nPages & Components\n----------\nPages and components are pretty the same thing. The main difference is the use. Pages are better for layouts with just few logic. In the other hand, components are very useful for complex and reusable logic pieces ("widgets"). Both have the same structure:\n\n - **controller.js** Server side logic. Defines the model to be passed to the template\n - **template.html** Mustache template, receives model, i18n and config objects\n - **i18n.json** it\'s passed to the template like a **i18n** object\n - **view.js** Client side logic (Common JS module by Browserify - http://browserify.org/)\n - **styles.less** CSS styles by less\n\nView.js and styles.less are compiled by a gulp task. (http://gulpjs.com/) \n\nMiddleware\n----------\nIn order to use zetam, just plug the middleware into your Express project (http://expressjs.com/)\n\n```js\n// projectDir/app.js\nvar express = require(\'express\');\nvar app = express();\nvar z = require(\'zetam\');\n\napp.use(express.static(__dirname + \'/public\'));\n\n// the potato\napp.use(z.middleware);\n\napp.listen(3000,function () {\n\tconsole.log(\'running on port \' + port);\n});\n```\n\nPages\n----------\nPages are controllers too. These are automatically loaded by zetam middleware. Just create a page folder inside the **pages** directory.\n\n\tprojectDir > pages > myFirstPage\n\nCreate at least the controller and the template files and browse:\n\nhttp://localhost:3000/myFirstPage\n\nPage files structure:\n\n - projectDir\n\t - pages\n\t\t - myFirstPage\n\t\t\t - controller.js\n\t\t\t - template.html\n\t\t\t - i18n.json\n\t\t\t - view.js\n\t\t\t - styles.less\n\nPages can be created running a yeoman command:\n```sh\nyo zetam:page\n```\n\nComponents\n----------\nComponents are loaded using an HTML tag inside any template with the **data-component** attribute.\n\n```html\n<!-- projectDir/pages/myFirstPage/template.html -->\n<h1>A title</h1>\n<div data-component="coolComponent" data-lastname="Smith"></div>\n```\n\nComponents files structure:\n\n - projectDir\n\t - components\n\t\t - coolComponent\n\t\t\t - controller.js\n\t\t\t - template.html\n\t\t\t - i18n.json\n\t\t\t - view.js\n\t\t\t - styles.less\n\nit\'s possible create a new component running a yeoman command:\n```sh\nyo zetam:component\n```\n\nControllers (controller.js)\n----------\n\nPages and components has controllers to set the model to be passed to the template. In the case of Pages the method to be executed is the http verb used to request the page.\n\nControllers receive three parameter:\n\n - config: In the case of components, config are all the attributes of the HTML tag , and also receive the inner html content. In the case of pages is req.config +  query parameters\n - req: express request object\n - cb : callback(error,response). The response could be an empty object, or it can has the model to be passed to the template\n\nExample: If the request is a POST request to http://localhost:3000/myFirstPage the way to handle this is:\n\nPage:\n\n```js\n// projectDir/pages/myFirstPage/controller.js\n\nexports.post = function(config,req,cb){\n\t// config has basic info + req.config + query string parameters\n\tcb(null,{\n\t\tmodel:{\n\t\t\tname:\'John\'\n\t\t}\n\t});\n}\n\n```\n\nIn the case of components included by a HTML tag, the method is always **init** method.\n\nComponent:\n```js\n// projectDir/components/coolComponent/controller.js\n\nexports.init = function(config,req,cb){\n\t// in this case config receive all the attributes\n\t// For example, if the tag would be \n\t// <div data-component="coolComponent" data-extra="great"></div>\n\t// config would have an data-extra atribute\n\t// config also receives an innerHTML attribute\n\t\n\tcb(null,{\n\t\tmodel:{\n\t\t\tname:\'John\',\n\t\t\tlastname:config[\'data-lastname\']\n\t\t}\n\t});\n}\n\n```\nComponents can also send a second parameter in order to override some config options, for example: the template name.\n\n```js\n// projectDir/components/coolComponent/controller.js\n\nexports.init = function(config,req,cb){\n\tcb(null,{\n\t\tmodel:{\n\t\t\tname:\'John\',\n\t\t\tlastname:config[\'data-lastname\']\n\t\t},\n\t\tconfig:{\n\t\t\t\'data-template\':\'otherTemplate\'\n\t\t}\n\t});\n}\n\n```\n\nThis tells zetam use **otherTemplate.html** instead the default **template.html** file inside the component directory.\n\n\ni18n (i18n.json)\n---------\ni18n.json file works with components and pages in the same way. In order to use it it\'s necesary set a **req.config.locale** variable before middleware loads. \n\n```js\n// projectDir/app.js\nvar express = require(\'express\');\nvar app = express();\nvar z = require(\'zetam\');\n\napp.use(express.static(__dirname + \'/public\'));\n\n// the potato\napp.use(function(req,res,next){\n\treq.config = { locale:\'ar\'}\n\tnext();\n});\n\napp.use(z.middleware);\n\napp.listen(3000,function () {\n\tconsole.log(\'running on port \' + port);\n});\n```\nInside the i18n.json file there would be to exist at least the **all**  object, it will be merged with the current locale object.\n\n```js\n// projectDir/components/coolComponent/i18n.json\n\n{\n\t"all":{\n\t\t"greeting": "Hi there",\n\t\t"goodbay": "Come back !"\n\t},\n\t"ar":{\n\t\t"greetings": "Hola, como estas?"\n\t}\n}\n\n```\n\nTemplates (template.html)\n---------\nReceives the model and the config objects from the controller. Also receives the i18n object.\n```html\n<!-- projectDir/pages/myFirstPage/template.html -->\n<h1>{{i18n.greeting}} my name is {{model.name}}</h1>\n\n<span>If this would be a component, this would be the component name: {{config.data-template}} and this would be a the data-lastname attribute of the component tag {{config.data-lastname}}</span>\n\n{{i18n.goodbay}}\n```\n\nGulp\n----------\nIn order to compile view.js and styles.less files into the **public** directory, use the gulp task provided:\n\n```js\nvar gulp = require(\'gulp\');\nvar z = require(\'zetam\');\n\n// this create a \'zetam\' task\nz.gulp(gulp);\n\ngulp.task(\'default\', [\'zetam\']);\n```\n\nAfter this several task are available, the default task (\'zetam\') is for development, it compiles an watch.\n\nThe is also **zetam-build**, this doesn\'t watch and minifies/uglifies everything.\n\n```sh\n# for dev\ngulp \n```\n\n\n```sh\n# for prod\ngulp zetam-build\n```\n\n\nMain Controllers (Alternative to Pages)\n---------\n\nThere is a more basic way to handle URLs: Main controllers\n\nExample: If the request is a GET request to http://localhost:3000/superCoolController the way to handle this is:\n\n```js\n// projectDir/controllers/superCoolController.js\n\nexports.get = function(req,res,next){\n\tres.json({hi:"world"});\n}\n\n```\nIt\'s basically is a middleware for an specific URL. If would be a Main controller and a Page with the same name , the controller will be loaded.',
+52 silly publish   bugs: { url: 'https://github.com/qzapaia/zetam/issues' },
+52 silly publish   homepage: 'https://github.com/qzapaia/zetam',
+52 silly publish   _id: 'zetam@0.2.77',
+52 silly publish   _shasum: '642dd6fab4c607fc6299cb0cd275c64c21863162',
+52 silly publish   _from: '.' }
+53 verbose url raw zetam
+54 verbose url resolving [ 'https://registry.npmjs.org/', './zetam' ]
+55 verbose url resolved https://registry.npmjs.org/zetam
+56 info trying registry request attempt 1 at 17:40:32
+57 http PUT https://registry.npmjs.org/zetam
+58 http 403 https://registry.npmjs.org/zetam
+59 verbose headers { date: 'Mon, 17 Nov 2014 20:39:49 GMT',
+59 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+59 verbose headers   'content-type': 'application/json',
+59 verbose headers   'cache-control': 'max-age=60',
+59 verbose headers   'content-length': '12076',
+59 verbose headers   'accept-ranges': 'bytes',
+59 verbose headers   via: '1.1 varnish',
+59 verbose headers   'x-served-by': 'cache-iad2127-IAD',
+59 verbose headers   'x-cache': 'MISS',
+59 verbose headers   'x-cache-hits': '0',
+59 verbose headers   'x-timer': 'S1416256789.520464,VS0,VE408',
+59 verbose headers   'keep-alive': 'timeout=10, max=50',
+59 verbose headers   connection: 'Keep-Alive' }
+60 error publish Failed PUT 403
+61 error Error: forbidden cannot modify pre-existing version: 0.2.77
+61 error old={"name":"zetam","description":"(In progress)","version":"0.2.77","engines":{"node":">0.10.1"},"author":{"name":"Marcelo Zapaia"},"repository":{"type":"git","url":"https://github.com/qzapaia/zetam.git"},"keywords":["express","web","framework","zeta"],"main":"index.js","license":"ISC","dependencies":{"async":"^0.9.0","browserify":"^5.11.0","cheerio":"^0.17.0","gulp":"^3.8.5","gulp-autoprefixer":"0.0.8","gulp-less":"^1.2.4","gulp-livereload":"^2.1.0","gulp-load-plugins":"^0.5.3","gulp-minify-css":"^0.3.10","gulp-nodemon":"^1.0.4","gulp-plumber":"^0.6.3","gulp-rename":"^1.2.0","gulp-uglify":"^1.0.1","gulp-watch":"^0.6.8","html-minifier":"^0.6.5","mustache":"^0.8.2","vinyl-transform":"0.0.1"},"bugs":{"url":"https://github.com/qzapaia/zetam/issues"},"homepage":"https://github.com/qzapaia/zetam","_id":"zetam@0.2.77","_shasum":"23efcfb49cbb08901f5240f2fa20e788a94ab3fc","_from":".","_npmVersion":"1.4.9","_npmUser":{"name":"qzapaia","email":"qzapaia@gmail.com"},"maintainers":[{"name":"qzapaia","email":"qzapaia@gmail.com"}],"dist":{"shasum":"23efcfb49cbb08901f5240f2fa20e788a94ab3fc","tarball":"http://registry.npmjs.org/zetam/-/zetam-0.2.77.tgz"}}
+61 error new={"name":"zetam","description":"(In progress)","version":"0.2.77","engines":{"node":">0.10.1"},"author":{"name":"Marcelo Zapaia"},"repository":{"type":"git","url":"https://github.com/qzapaia/zetam.git"},"keywords":["express","web","framework","zeta"],"main":"index.js","license":"ISC","dependencies":{"async":"^0.9.0","browserify":"^5.11.0","cheerio":"^0.17.0","gulp":"^3.8.5","gulp-autoprefixer":"0.0.8","gulp-less":"^1.2.4","gulp-livereload":"^2.1.0","gulp-load-plugins":"^0.5.3","gulp-minify-css":"^0.3.10","gulp-nodemon":"^1.0.4","gulp-plumber":"^0.6.3","gulp-rename":"^1.2.0","gulp-uglify":"^1.0.1","gulp-watch":"^0.6.8","html-minifier":"^0.6.5","mustache":"^0.8.2","vinyl-transform":"0.0.1"},"readmeFilename":"README.md","readme":"Zetam\u000a-----\u000aZetam is a middleware for express that makes frontend development easy. It's based on two basic concepts: Pages and Components\u000a\u000aInstall\u000a-----------\u000a\u000a```sh\u000anpm install zetam\u000a```\u000a\u000aYO Generator\u000a----------\u000aTo start a basic project use the Yeoman generator: https://www.npmjs.org/package/generator-zetam\u000a\u000a\u000a```sh\u000a# install yeoman, zetam generator and gulp globally\u000anpm install -g yo generator-zetam gulp\u000a\u000a# init a new project\u000ayo zetam\u000a\u000a# run gulp\u000agulp\u000a```\u000a\u000aPages & Components\u000a----------\u000aPages and components are pretty the same thing. The main difference is the use. Pages are better for layouts with just few logic. In the other hand, components are very useful for complex and reusable logic pieces (\"widgets\"). Both have the same structure:\u000a\u000a - **controller.js** Server side logic. Defines the model to be passed to the template\u000a - **template.html** Mustache template, receives model, i18n and config objects\u000a - **i18n.json** it's passed to the template like a **i18n** object\u000a - **view.js** Client side logic (Common JS module by Browserify - http://browserify.org/)\u000a - **styles.less** CSS styles by less\u000a\u000aView.js and styles.less are compiled by a gulp task. (http://gulpjs.com/) \u000a\u000aMiddleware\u000a----------\u000aIn order to use zetam, just plug the middleware into your Express project (http://expressjs.com/)\u000a\u000a```js\u000a// projectDir/app.js\u000avar express = require('express');\u000avar app = express();\u000avar z = require('zetam');\u000a\u000aapp.use(express.static(__dirname + '/public'));\u000a\u000a// the potato\u000aapp.use(z.middleware);\u000a\u000aapp.listen(3000,function () {\u000a\u0009console.log('running on port ' + port);\u000a});\u000a```\u000a\u000aPages\u000a----------\u000aPages are controllers too. These are automatically loaded by zetam middleware. Just create a page folder inside the **pages** directory.\u000a\u000a\u0009projectDir > pages > myFirstPage\u000a\u000aCreate at least the controller and the template files and browse:\u000a\u000ahttp://localhost:3000/myFirstPage\u000a\u000aPage files structure:\u000a\u000a - projectDir\u000a\u0009 - pages\u000a\u0009\u0009 - myFirstPage\u000a\u0009\u0009\u0009 - controller.js\u000a\u0009\u0009\u0009 - template.html\u000a\u0009\u0009\u0009 - i18n.json\u000a\u0009\u0009\u0009 - view.js\u000a\u0009\u0009\u0009 - styles.less\u000a\u000aPages can be created running a yeoman command:\u000a```sh\u000ayo zetam:page\u000a```\u000a\u000aComponents\u000a----------\u000aComponents are loaded using an HTML tag inside any template with the **data-component** attribute.\u000a\u000a```html\u000a<!-- projectDir/pages/myFirstPage/template.html -->\u000a<h1>A title</h1>\u000a<div data-component=\"coolComponent\" data-lastname=\"Smith\"></div>\u000a```\u000a\u000aComponents files structure:\u000a\u000a - projectDir\u000a\u0009 - components\u000a\u0009\u0009 - coolComponent\u000a\u0009\u0009\u0009 - controller.js\u000a\u0009\u0009\u0009 - template.html\u000a\u0009\u0009\u0009 - i18n.json\u000a\u0009\u0009\u0009 - view.js\u000a\u0009\u0009\u0009 - styles.less\u000a\u000ait's possible create a new component running a yeoman command:\u000a```sh\u000ayo zetam:component\u000a```\u000a\u000aControllers (controller.js)\u000a----------\u000a\u000aPages and components has controllers to set the model to be passed to the template. In the case of Pages the method to be executed is the http verb used to request the page.\u000a\u000aControllers receive three parameter:\u000a\u000a - config: In the case of components, config are all the attributes of the HTML tag , and also receive the inner html content. In the case of pages is req.config +  query parameters\u000a - req: express request object\u000a - cb : callback(error,response). The response could be an empty object, or it can has the model to be passed to the template\u000a\u000aExample: If the request is a POST request to http://localhost:3000/myFirstPage the way to handle this is:\u000a\u000aPage:\u000a\u000a```js\u000a// projectDir/pages/myFirstPage/controller.js\u000a\u000aexports.post = function(config,req,cb){\u000a\u0009// config has basic info + req.config + query string parameters\u000a\u0009cb(null,{\u000a\u0009\u0009model:{\u000a\u0009\u0009\u0009name:'John'\u000a\u0009\u0009}\u000a\u0009});\u000a}\u000a\u000a```\u000a\u000aIn the case of components included by a HTML tag, the method is always **init** method.\u000a\u000aComponent:\u000a```js\u000a// projectDir/components/coolComponent/controller.js\u000a\u000aexports.init = function(config,req,cb){\u000a\u0009// in this case config receive all the attributes\u000a\u0009// For example, if the tag would be \u000a\u0009// <div data-component=\"coolComponent\" data-extra=\"great\"></div>\u000a\u0009// config would have an data-extra atribute\u000a\u0009// config also receives an innerHTML attribute\u000a\u0009\u000a\u0009cb(null,{\u000a\u0009\u0009model:{\u000a\u0009\u0009\u0009name:'John',\u000a\u0009\u0009\u0009lastname:config['data-lastname']\u000a\u0009\u0009}\u000a\u0009});\u000a}\u000a\u000a```\u000aComponents can also send a second parameter in order to override some config options, for example: the template name.\u000a\u000a```js\u000a// projectDir/components/coolComponent/controller.js\u000a\u000aexports.init = function(config,req,cb){\u000a\u0009cb(null,{\u000a\u0009\u0009model:{\u000a\u0009\u0009\u0009name:'John',\u000a\u0009\u0009\u0009lastname:config['data-lastname']\u000a\u0009\u0009},\u000a\u0009\u0009config:{\u000a\u0009\u0009\u0009'data-template':'otherTemplate'\u000a\u0009\u0009}\u000a\u0009});\u000a}\u000a\u000a```\u000a\u000aThis tells zetam use **otherTemplate.html** instead the default **template.html** file inside the component directory.\u000a\u000a\u000ai18n (i18n.json)\u000a---------\u000ai18n.json file works with components and pages in the same way. In order to use it it's necesary set a **req.config.locale** variable before middleware loads. \u000a\u000a```js\u000a// projectDir/app.js\u000avar express = require('express');\u000avar app = express();\u000avar z = require('zetam');\u000a\u000aapp.use(express.static(__dirname + '/public'));\u000a\u000a// the potato\u000aapp.use(function(req,res,next){\u000a\u0009req.config = { locale:'ar'}\u000a\u0009next();\u000a});\u000a\u000aapp.use(z.middleware);\u000a\u000aapp.listen(3000,function () {\u000a\u0009console.log('running on port ' + port);\u000a});\u000a```\u000aInside the i18n.json file there would be to exist at least the **all**  object, it will be merged with the current locale object.\u000a\u000a```js\u000a// projectDir/components/coolComponent/i18n.json\u000a\u000a{\u000a\u0009\"all\":{\u000a\u0009\u0009\"greeting\": \"Hi there\",\u000a\u0009\u0009\"goodbay\": \"Come back !\"\u000a\u0009},\u000a\u0009\"ar\":{\u000a\u0009\u0009\"greetings\": \"Hola, como estas?\"\u000a\u0009}\u000a}\u000a\u000a```\u000a\u000aTemplates (template.html)\u000a---------\u000aReceives the model and the config objects from the controller. Also receives the i18n object.\u000a```html\u000a<!-- projectDir/pages/myFirstPage/template.html -->\u000a<h1>{{i18n.greeting}} my name is {{model.name}}</h1>\u000a\u000a<span>If this would be a component, this would be the component name: {{config.data-template}} and this would be a the data-lastname attribute of the component tag {{config.data-lastname}}</span>\u000a\u000a{{i18n.goodbay}}\u000a```\u000a\u000aGulp\u000a----------\u000aIn order to compile view.js and styles.less files into the **public** directory, use the gulp task provided:\u000a\u000a```js\u000avar gulp = require('gulp');\u000avar z = require('zetam');\u000a\u000a// this create a 'zetam' task\u000az.gulp(gulp);\u000a\u000agulp.task('default', ['zetam']);\u000a```\u000a\u000aAfter this several task are available, the default task ('zetam') is for development, it compiles an watch.\u000a\u000aThe is also **zetam-build**, this doesn't watch and minifies/uglifies everything.\u000a\u000a```sh\u000a# for dev\u000agulp \u000a```\u000a\u000a\u000a```sh\u000a# for prod\u000agulp zetam-build\u000a```\u000a\u000a\u000aMain Controllers (Alternative to Pages)\u000a---------\u000a\u000aThere is a more basic way to handle URLs: Main controllers\u000a\u000aExample: If the request is a GET request to http://localhost:3000/superCoolController the way to handle this is:\u000a\u000a```js\u000a// projectDir/controllers/superCoolController.js\u000a\u000aexports.get = function(req,res,next){\u000a\u0009res.json({hi:\"world\"});\u000a}\u000a\u000a```\u000aIt's basically is a middleware for an specific URL. If would be a Main controller and a Page with the same name , the controller will be loaded.","bugs":{"url":"https://github.com/qzapaia/zetam/issues"},"homepage":"https://github.com/qzapaia/zetam","_id":"zetam@0.2.77","_shasum":"642dd6fab4c607fc6299cb0cd275c64c21863162","_from":".","_npmVersion":"1.4.9","_npmUser":{"name":"qzapaia","email":"qzapaia@gmail.com"},"maintainers":[{"name":"qzapaia","email":"qzapaia@gmail.com"}],"dist":{"shasum":"642dd6fab4c607fc6299cb0cd275c64c21863162","tarball":"http://registry.npmjs.org/zetam/-/zetam-0.2.77.tgz"}}: zetam
+61 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:273:14)
+61 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:211:65)
+61 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:123:22)
+61 error     at Request.EventEmitter.emit (events.js:98:17)
+61 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:893:14)
+61 error     at Request.EventEmitter.emit (events.js:117:20)
+61 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:844:12)
+61 error     at IncomingMessage.EventEmitter.emit (events.js:117:20)
+61 error     at _stream_readable.js:919:16
+61 error     at process._tickCallback (node.js:419:13)
+62 error If you need help, you may report this *entire* log,
+62 error including the npm and node versions, at:
+62 error     <http://github.com/npm/npm/issues>
+63 error System Darwin 14.0.0
+64 error command "node" "/usr/local/bin/npm" "publish"
+65 error cwd /Users/mzapaia/src/zetam
+66 error node -v v0.10.28
+67 error npm -v 1.4.9
+68 verbose exit [ 1, true ]
