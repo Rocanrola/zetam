@@ -1,5 +1,6 @@
 var load = require('./load');
 var utils = require('./utils');
+var z = require('./');
 
 module.exports = function (req,res,next) {
 	req.resource = utils.pathNameToresource(req._parsedUrl.pathname);
@@ -8,11 +9,11 @@ module.exports = function (req,res,next) {
 }
 
 var router = function(req,res,next){
-	
-	var pageName = req.resource.name || 'index';
+	var pageName = z.getForcedPageNameAndDelete() || req.resource.name || 'index';
+
 	var methodName = req.method.toLowerCase() || 'get';
 	var controller = (pageName === 'components') ? require('./controllers/components') : load.controller(pageName);
-	
+
 	var pageConfig = utils.cloneObject(req.config || {});
 		pageConfig = utils.mergeObjects(pageConfig,req.query);
 	
@@ -26,7 +27,6 @@ var router = function(req,res,next){
 				res.redirect(err.redirect.code || 301, err.redirect.url);
 			}else{
 				// console.error(err);
-				// res.status(404).end();
 				next();
 			}
 		});
