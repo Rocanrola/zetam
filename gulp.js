@@ -227,7 +227,7 @@ module.exports = function(gulp,conf) {
         });
     });
 
-    gulp.task('zetam', ['zetam-build','livereload','browserify','less','templates','server']);
+    gulp.task('zetam', ['livereload','browserify','less','templates','server']);
     gulp.task('zetam-build',['build-browserify','build-less']);
 
 }
