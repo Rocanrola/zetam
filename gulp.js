@@ -58,7 +58,7 @@ module.exports = function(gulp,conf) {
                 path.basename = path.dirname;
                 path.dirname = '';
             }))
-            .pipe(gulp.dest('./public/css/components/'))
+            .pipe(gulp.dest('./public/zetam/css/components/'))
             .pipe(livereload());
     })
 
@@ -72,7 +72,7 @@ module.exports = function(gulp,conf) {
                 path.basename = path.dirname;
                 path.dirname = '';
             }))
-            .pipe(gulp.dest('./public/css/pages/'))
+            .pipe(gulp.dest('./public/zetam/css/pages/'))
             .pipe(livereload());
     })
 
@@ -95,7 +95,7 @@ module.exports = function(gulp,conf) {
                 path.basename = path.dirname;
                 path.dirname = '';
             }))
-            .pipe(gulp.dest('./public/js/components/'))
+            .pipe(gulp.dest('./public/zetam/js/components/'))
             .pipe(livereload({path:'once.js'}));
     })
 
@@ -115,7 +115,7 @@ module.exports = function(gulp,conf) {
                 path.basename = path.dirname;
                 path.dirname = '';
             }))
-            .pipe(gulp.dest('./public/js/pages/'))
+            .pipe(gulp.dest('./public/zetam/js/pages/'))
             .pipe(livereload({path:'once.js'}));
     })
 
@@ -136,7 +136,7 @@ module.exports = function(gulp,conf) {
                 path.dirname = '';
             }))
             .pipe($.minifyCSS({keepBreaks:true}))
-            .pipe(gulp.dest('./public/css/components/'));
+            .pipe(gulp.dest('./public/zetam/css/components/'));
     })
 
     gulp.task('build-less-pages', function() {
@@ -148,7 +148,7 @@ module.exports = function(gulp,conf) {
                 path.dirname = '';
             }))
             .pipe($.minifyCSS({keepBreaks:true}))
-            .pipe(gulp.dest('./public/css/pages/'));
+            .pipe(gulp.dest('./public/zetam/css/pages/'));
     })
 
     gulp.task('build-less',['build-less-components','build-less-pages']);
@@ -169,7 +169,7 @@ module.exports = function(gulp,conf) {
                 path.dirname = '';
             }))
             .pipe($.uglify())
-            .pipe(gulp.dest('./public/js/components/'));
+            .pipe(gulp.dest('./public/zetam/js/components/'));
     })
 
     gulp.task('build-browserify-pages', function() {
@@ -187,7 +187,7 @@ module.exports = function(gulp,conf) {
                 path.dirname = '';
             }))
             .pipe($.uglify())
-            .pipe(gulp.dest('./public/js/pages/'));
+            .pipe(gulp.dest('./public/zetam/js/pages/'));
     })
 
     gulp.task('build-browserify',['build-browserify-components','build-browserify-pages']);
