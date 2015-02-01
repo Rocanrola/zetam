@@ -4,12 +4,12 @@
 	<meta charset="UTF-8">
 	<title>Component - {{model.componentName}}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link rel="stylesheet" href="/css/components/{{model.componentName}}.css">
+	<link rel="stylesheet" href="/zetam/css/components/{{model.componentName}}.css">
 </head>
 <body data-country="{{i18n.locale}}">
 	<div data-component="{{model.componentName}}" {{{model.componentAttrs}}}></div>
 
-	<script src="/js/components/{{model.componentName}}.js"></script>
+	<script src="/zetam/js/components/{{model.componentName}}.js"></script>
 	<script>if(window.z){ z.initDomComponents(); }</script>
 </body>
 </html>
