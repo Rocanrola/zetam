@@ -12,6 +12,9 @@ var path = require('path');
 var livereload = require('gulp-livereload');
 var browserify = require('browserify');
 var transform = require('vinyl-transform');
+var source = require('vinyl-source-stream');
+var glob = require('glob');
+var watchify = require('watchify');
 var componentPaths;
 
 var $ = {
@@ -78,48 +81,51 @@ module.exports = function(gulp,conf) {
 
     gulp.task('less',['less-components','less-pages']);
 
+    gulp.task('browserify',function(){
+        // Browserify
+        addEach(componentPaths,'/**/view.js').forEach(function(path){
+            glob(path, function(err, files) {
+                files.forEach(function(entry) {
+                        var w = watchify(browserify({ entries: [entry] }))
+                        var build = function(){
+                            w.bundle()
+                            .pipe(source(entry))
+                            .pipe($.plumber(plumberOption))
+                            .pipe($.rename(function(path) {
+                                path.basename = path.dirname.split('/').pop();
+                                path.dirname = '';
+                            }))
+                            .pipe(gulp.dest('./public/zetam/js/components/'))
+                            .pipe(livereload());
+                        }
+                        w.on('update',build)
+                        build();
+                });
+            });
+        })
 
-    // Browserify
-
-    gulp.task('browserify-components', function() {
-        var browserified = transform(function(filename) {
-            var b = browserify(filename);
-            return b.bundle();
+        addEach(pagesPaths,'/**/view.js').forEach(function(path){
+            glob(path, function(err, files) {
+                files.forEach(function(entry) {
+                        var w = watchify(browserify({ entries: [entry] }))
+                        var build = function(){
+                            w.bundle()
+                            .pipe(source(entry))
+                            .pipe($.plumber(plumberOption))
+                            .pipe($.rename(function(path) {
+                                path.basename = path.dirname.split('/').pop();
+                                path.dirname = '';
+                            }))
+                            .pipe(gulp.dest('./public/zetam/js/pages/'))
+                            .pipe(livereload());
+                        }
+                        w.on('update',build)
+                        build();
+                });
+            });
         });
+    });
 
-        return gulp.src(addEach(componentPaths,'/**/view.js'), {read: false})
-            .pipe($.watch())
-            .pipe($.plumber(plumberOption))
-            .pipe(browserified)
-            .pipe($.rename(function(path) {
-                path.basename = path.dirname;
-                path.dirname = '';
-            }))
-            .pipe(gulp.dest('./public/zetam/js/components/'))
-            .pipe(livereload({path:'once.js'}));
-    })
-
-    gulp.task('browserify-pages', function() {
-
-        var browserified = transform(function(filename) {
-            var b = browserify(filename);
-            return b.bundle();
-        });
-
-
-        return gulp.src(addEach(pagesPaths,'/**/view.js'), {read: false})
-            .pipe($.watch())
-            .pipe($.plumber(plumberOption))
-            .pipe(browserified)
-            .pipe($.rename(function(path) {
-                path.basename = path.dirname;
-                path.dirname = '';
-            }))
-            .pipe(gulp.dest('./public/zetam/js/pages/'))
-            .pipe(livereload({path:'once.js'}));
-    })
-
-    gulp.task('browserify',['browserify-components','browserify-pages']);
 
 
     //////////////////
